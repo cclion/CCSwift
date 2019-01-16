@@ -57,6 +57,7 @@
 		CC83E02821EF252C00524B4B /* CCSwiftUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CCSwiftUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC83E02C21EF252C00524B4B /* CCSwiftUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCSwiftUITests.swift; sourceTree = "<group>"; };
 		CC83E02E21EF252C00524B4B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CCD7AFAD21EF28FA00DFED80 /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		CF2599CAE0A8B32B555C5F1C /* Pods-CCSwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CCSwift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CCSwift/Pods-CCSwift.debug.xcconfig"; sourceTree = "<group>"; };
 		E2ABC861788E022FF72589A1 /* Pods_CCSwiftTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CCSwiftTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -114,7 +115,7 @@
 		CC83E00B21EF252B00524B4B /* CCSwift */ = {
 			isa = PBXGroup;
 			children = (
-				CC83E00C21EF252B00524B4B /* AppDelegate.swift */,
+				CCD7AFAC21EF28BB00DFED80 /* Main */,
 				CC83E00E21EF252B00524B4B /* ViewController.swift */,
 				CC83E01021EF252B00524B4B /* Main.storyboard */,
 				CC83E01321EF252C00524B4B /* Assets.xcassets */,
@@ -140,6 +141,15 @@
 				CC83E02E21EF252C00524B4B /* Info.plist */,
 			);
 			path = CCSwiftUITests;
+			sourceTree = "<group>";
+		};
+		CCD7AFAC21EF28BB00DFED80 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				CC83E00C21EF252B00524B4B /* AppDelegate.swift */,
+				CCD7AFAD21EF28FA00DFED80 /* Bridging-Header.h */,
+			);
+			path = Main;
 			sourceTree = "<group>";
 		};
 		EA321FB45C0027637E326C7C /* Pods */ = {
@@ -581,6 +591,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = cc.cclion.CCSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/CCSwift/Main/Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -600,6 +611,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = cc.cclion.CCSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/CCSwift/Main/Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
