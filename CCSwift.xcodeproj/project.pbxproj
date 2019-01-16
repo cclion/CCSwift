@@ -17,6 +17,9 @@
 		CC83E01721EF252C00524B4B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC83E01521EF252C00524B4B /* LaunchScreen.storyboard */; };
 		CC83E02221EF252C00524B4B /* CCSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC83E02121EF252C00524B4B /* CCSwiftTests.swift */; };
 		CC83E02D21EF252C00524B4B /* CCSwiftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC83E02C21EF252C00524B4B /* CCSwiftUITests.swift */; };
+		CCD7AFAF21EF2D0900DFED80 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD7AFAE21EF2D0900DFED80 /* TabBarController.swift */; };
+		CCD7AFB121EF300600DFED80 /* Definition.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD7AFB021EF300600DFED80 /* Definition.swift */; };
+		CCD7AFB321EF307900DFED80 /* GlobalConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD7AFB221EF307900DFED80 /* GlobalConst.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +61,9 @@
 		CC83E02C21EF252C00524B4B /* CCSwiftUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCSwiftUITests.swift; sourceTree = "<group>"; };
 		CC83E02E21EF252C00524B4B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CCD7AFAD21EF28FA00DFED80 /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
+		CCD7AFAE21EF2D0900DFED80 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		CCD7AFB021EF300600DFED80 /* Definition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Definition.swift; sourceTree = "<group>"; };
+		CCD7AFB221EF307900DFED80 /* GlobalConst.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalConst.swift; sourceTree = "<group>"; };
 		CF2599CAE0A8B32B555C5F1C /* Pods-CCSwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CCSwift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CCSwift/Pods-CCSwift.debug.xcconfig"; sourceTree = "<group>"; };
 		E2ABC861788E022FF72589A1 /* Pods_CCSwiftTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CCSwiftTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -147,7 +153,10 @@
 			isa = PBXGroup;
 			children = (
 				CC83E00C21EF252B00524B4B /* AppDelegate.swift */,
+				CCD7AFAE21EF2D0900DFED80 /* TabBarController.swift */,
 				CCD7AFAD21EF28FA00DFED80 /* Bridging-Header.h */,
+				CCD7AFB021EF300600DFED80 /* Definition.swift */,
+				CCD7AFB221EF307900DFED80 /* GlobalConst.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -405,6 +414,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CCD7AFB321EF307900DFED80 /* GlobalConst.swift in Sources */,
+				CCD7AFB121EF300600DFED80 /* Definition.swift in Sources */,
+				CCD7AFAF21EF2D0900DFED80 /* TabBarController.swift in Sources */,
 				CC83E00F21EF252B00524B4B /* ViewController.swift in Sources */,
 				CC83E00D21EF252B00524B4B /* AppDelegate.swift in Sources */,
 			);
