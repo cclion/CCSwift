@@ -8,13 +8,15 @@
 
 import UIKit
 
-
 let logoColor = RGBColor(r: 0, g: 195, b: 231) //主题色
 let defuleBackColor = RGBColor(r: 255, g: 255, b: 255) //页面背景
 let tableViewBackColor = RGBColor(r: 247, g: 247, b: 247)//列表背景颜色
 let textFieldBorderColor = RGBColor(r: 204, g: 204, b: 204) //输入框边框颜色
 let invalidColor = RGBColor(r: 217, g: 217, b: 217) //按钮失效颜色
 
+var randomColor: UIColor {
+    return UIColor(red: CGFloat(arc4random_uniform(256))/255.0, green: CGFloat(arc4random_uniform(256))/255.0, blue: CGFloat(arc4random_uniform(256))/255.0, alpha: 1.0)
+}
 
 // MARK: - 尺寸信息
 func iPhoneX() -> Bool {

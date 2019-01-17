@@ -13,14 +13,17 @@ class TabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.setupChildController(ViewController(), iconImageStr: "Home", title: "首页")
-        self.setupChildController(ViewController(), iconImageStr: "Home", title: "首页")
-        self.setupChildController(ViewController(), iconImageStr: "Home", title: "首页")
-        self.setupChildController(ViewController(), iconImageStr: "Home", title: "首页")
+        
+        
+        self.setupChildController(HomeVC(), iconImageStr: "icon_tabbar_home", title: "首页")
+        self.setupChildController(ViewController(), iconImageStr: "icon_tabbar_QRcode", title: "扫描")
+        self.setupChildController(ViewController(), iconImageStr: "icon_tabbar_other", title: "其他")
+        self.setupChildController(ViewController(), iconImageStr: "icon_tabbar_mine", title: "我的")
+
 
     }
     
-    // icon尺寸 1X 22
+   
     func setupChildController(_ childController: UIViewController,
                            iconImageStr: String,
                            title: String) {
@@ -30,7 +33,7 @@ class TabBarController: UITabBarController {
         childController.tabBarItem.title = title
         childController.tabBarItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor:logoColor], for: .normal)
         childController.tabBarItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor:logoColor], for: .selected)
-        self.addChild(childController)
+        self.addChild(UINavigationController.init(rootViewController: childController))
     }
     
 

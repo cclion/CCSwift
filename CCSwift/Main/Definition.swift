@@ -18,3 +18,4 @@ func RGBAColor(r:CGFloat,g:CGFloat,b:CGFloat,a:CGFloat) ->UIColor{
 func RGBCOLOR_HEX(h:Int) ->UIColor {
     return RGBColor(r: CGFloat(((h)>>16) & 0xFF), g:   CGFloat(((h)>>8) & 0xFF), b:  CGFloat((h) & 0xFF))
 }
+

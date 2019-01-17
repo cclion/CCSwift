@@ -13,11 +13,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
         window?.makeKeyAndVisible();
-//        window?.backgroundColor = UIColor.red;
+        window?.backgroundColor = UIColor.white;
         window?.rootViewController = TabBarController();
 
         FLEXManager.shared().showExplorer()

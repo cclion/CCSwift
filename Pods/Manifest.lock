@@ -1,24 +1,32 @@
 PODS:
   - Alamofire (4.7.3)
+  - DNSPageView (1.1.1)
   - FLEX (2.4.0)
+  - SnapKit (4.0.1)
   - SwiftyJSON (4.2.0)
 
 DEPENDENCIES:
   - Alamofire (~> 4.7)
+  - DNSPageView
   - FLEX (~> 2.0)
+  - SnapKit (~> 4.0.0)
   - SwiftyJSON (~> 4.0)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
+    - DNSPageView
     - FLEX
+    - SnapKit
     - SwiftyJSON
 
 SPEC CHECKSUMS:
   Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
+  DNSPageView: c8598a6d38ee4191191e326cbd5198b641245aaf
   FLEX: bd1a39e55b56bb413b6f1b34b3c10a0dc44ef079
+  SnapKit: 0de968a9fec17499afa29683b05d0c775b6d1c29
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
 
-PODFILE CHECKSUM: fc55d04f19509994dfc945818f4b0a0a2cacf55f
+PODFILE CHECKSUM: 8f06c6dcf4111a0ce2be1e7e2aa2856c8eed6977
 
 COCOAPODS: 1.5.3

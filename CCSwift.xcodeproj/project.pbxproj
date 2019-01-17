@@ -20,6 +20,8 @@
 		CCD7AFAF21EF2D0900DFED80 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD7AFAE21EF2D0900DFED80 /* TabBarController.swift */; };
 		CCD7AFB121EF300600DFED80 /* Definition.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD7AFB021EF300600DFED80 /* Definition.swift */; };
 		CCD7AFB321EF307900DFED80 /* GlobalConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD7AFB221EF307900DFED80 /* GlobalConst.swift */; };
+		CCD7AFB821F0260A00DFED80 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD7AFB721F0260A00DFED80 /* HomeVC.swift */; };
+		CCD7AFBA21F0267000DFED80 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD7AFB921F0267000DFED80 /* NavigationController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +66,8 @@
 		CCD7AFAE21EF2D0900DFED80 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		CCD7AFB021EF300600DFED80 /* Definition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Definition.swift; sourceTree = "<group>"; };
 		CCD7AFB221EF307900DFED80 /* GlobalConst.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalConst.swift; sourceTree = "<group>"; };
+		CCD7AFB721F0260A00DFED80 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
+		CCD7AFB921F0267000DFED80 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		CF2599CAE0A8B32B555C5F1C /* Pods-CCSwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CCSwift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CCSwift/Pods-CCSwift.debug.xcconfig"; sourceTree = "<group>"; };
 		E2ABC861788E022FF72589A1 /* Pods_CCSwiftTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CCSwiftTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -121,6 +125,9 @@
 		CC83E00B21EF252B00524B4B /* CCSwift */ = {
 			isa = PBXGroup;
 			children = (
+				CCD7AFB621F0241800DFED80 /* Tools */,
+				CCD7AFB521F0241000DFED80 /* Mine */,
+				CCD7AFB421F023B300DFED80 /* Home */,
 				CCD7AFAC21EF28BB00DFED80 /* Main */,
 				CC83E00E21EF252B00524B4B /* ViewController.swift */,
 				CC83E01021EF252B00524B4B /* Main.storyboard */,
@@ -154,11 +161,34 @@
 			children = (
 				CC83E00C21EF252B00524B4B /* AppDelegate.swift */,
 				CCD7AFAE21EF2D0900DFED80 /* TabBarController.swift */,
+				CCD7AFB921F0267000DFED80 /* NavigationController.swift */,
 				CCD7AFAD21EF28FA00DFED80 /* Bridging-Header.h */,
 				CCD7AFB021EF300600DFED80 /* Definition.swift */,
 				CCD7AFB221EF307900DFED80 /* GlobalConst.swift */,
 			);
 			path = Main;
+			sourceTree = "<group>";
+		};
+		CCD7AFB421F023B300DFED80 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				CCD7AFB721F0260A00DFED80 /* HomeVC.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		CCD7AFB521F0241000DFED80 /* Mine */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Mine;
+			sourceTree = "<group>";
+		};
+		CCD7AFB621F0241800DFED80 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Tools;
 			sourceTree = "<group>";
 		};
 		EA321FB45C0027637E326C7C /* Pods */ = {
@@ -369,7 +399,9 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-CCSwift/Pods-CCSwift-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/DNSPageView/DNSPageView.framework",
 				"${BUILT_PRODUCTS_DIR}/FLEX/FLEX.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -377,7 +409,9 @@
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DNSPageView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FLEX.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -417,7 +451,9 @@
 				CCD7AFB321EF307900DFED80 /* GlobalConst.swift in Sources */,
 				CCD7AFB121EF300600DFED80 /* Definition.swift in Sources */,
 				CCD7AFAF21EF2D0900DFED80 /* TabBarController.swift in Sources */,
+				CCD7AFB821F0260A00DFED80 /* HomeVC.swift in Sources */,
 				CC83E00F21EF252B00524B4B /* ViewController.swift in Sources */,
+				CCD7AFBA21F0267000DFED80 /* NavigationController.swift in Sources */,
 				CC83E00D21EF252B00524B4B /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
