@@ -18,7 +18,7 @@ class TabBarController: UITabBarController {
         self.setupChildController(HomeVC(), iconImageStr: "icon_tabbar_home", title: "首页")
         self.setupChildController(ViewController(), iconImageStr: "icon_tabbar_QRcode", title: "扫描")
         self.setupChildController(ViewController(), iconImageStr: "icon_tabbar_other", title: "其他")
-        self.setupChildController(ViewController(), iconImageStr: "icon_tabbar_mine", title: "我的")
+        self.setupChildController(MineVC(), iconImageStr: "icon_tabbar_mine", title: "我的")
 
 
     }
