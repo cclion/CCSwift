@@ -18,11 +18,11 @@ class GetCodeButton: UIButton {
             _remainTime = newValue
             
             if newValue == 0 {
-                self.setTitle("获取验证码", for: UIControlState.normal)
+                self.setTitle("获取验证码", for: UIControl.State.normal)
                 self.titleLabel?.font = UIFont.boldSystemFont(ofSize: 15)
                 self.isAble = true
             }else{
-                self.setTitle("\(_remainTime!)"+"s 后获取" , for: UIControlState.normal)
+                self.setTitle("\(_remainTime!)"+"s 后获取" , for: UIControl.State.normal)
                 self.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
                 self.isAble = false
             }
@@ -34,11 +34,11 @@ class GetCodeButton: UIButton {
             //可点击
             if isAble! {
                 self.isUserInteractionEnabled = true
-                self.setTitleColor(logoColor, for: UIControlState.normal)
+                self.setTitleColor(logoColor, for: UIControl.State.normal)
 
             }else{
                 self.isUserInteractionEnabled = false
-                self.setTitleColor(invalidColor, for: UIControlState.normal)
+                self.setTitleColor(invalidColor, for: UIControl.State.normal)
 
             }
         }

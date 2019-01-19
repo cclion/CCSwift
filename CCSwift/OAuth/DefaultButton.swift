@@ -14,11 +14,11 @@ class DefaultButton: UIButton {
             //可点击
             if isAble! {
                 self.isUserInteractionEnabled = true
-                self.setTitleColor(UIColor.white, for: UIControlState.normal)
+                self.setTitleColor(UIColor.white, for: UIControl.State.normal)
                 self.backgroundColor = logoColor
             }else{
                 self.isUserInteractionEnabled = false
-                self.setTitleColor(UIColor.white, for: UIControlState.normal)
+                self.setTitleColor(UIColor.white, for: UIControl.State.normal)
                 self.backgroundColor = invalidColor
             }
         }
@@ -26,7 +26,7 @@ class DefaultButton: UIButton {
 
     init(title:String) {
         super.init(frame: CGRect.zero)
-        self.setTitle(title, for: UIControlState.normal)
+        self.setTitle(title, for: UIControl.State.normal)
         self.layer.masksToBounds = true
         self.layer.cornerRadius = 5
         self.backgroundColor = logoColor

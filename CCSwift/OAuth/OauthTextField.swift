@@ -18,7 +18,7 @@ class OauthTextField: UITextField {
         self.layer.masksToBounds = true
         self.layer.cornerRadius = 5
         self.placeholder = placeholder
-        self.leftViewMode = UITextFieldViewMode.always
+    self.leftViewMode = UITextField.ViewMode.always
         self.leftView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: 5, height: 0))
     }
     required init?(coder aDecoder: NSCoder) {

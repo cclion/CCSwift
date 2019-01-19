@@ -53,24 +53,8 @@ class NetworkTool {
             var header : HTTPHeaders = Alamofire.SessionManager.defaultHTTPHeaders
             header["Accept"] = "application/json"
 
-            let baseURL : String
-            switch serveType {
-            case .mas:
-                baseURL = masBaseURL
-                
-                if OauthVM.sharedInstance.masToken != nil{
-                    header["Authorization"] = "bearer " + OauthVM.sharedInstance.masToken!}
-                break
-            case .estate:
-                baseURL = estateBaseURL
-                if OauthVM.sharedInstance.estateToken != nil{
-                    header["Authorization"] = "bearer " + OauthVM.sharedInstance.estateToken!}
-                break
-            case .passport:
-                baseURL = passPortBaseURL
-                break
-            }
-            
+            let baseURL : String = localhost
+                     
             let requestURL = baseURL + subURLString
             
             Alamofire.request(

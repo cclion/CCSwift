@@ -23,6 +23,15 @@
 		CCD7AFB821F0260A00DFED80 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD7AFB721F0260A00DFED80 /* HomeVC.swift */; };
 		CCD7AFBA21F0267000DFED80 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD7AFB921F0267000DFED80 /* NavigationController.swift */; };
 		CCD7AFBC21F051C300DFED80 /* MineVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD7AFBB21F051C300DFED80 /* MineVC.swift */; };
+		CCD7AFC021F07F0200DFED80 /* CCString.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD7AFBF21F07F0200DFED80 /* CCString.swift */; };
+		CCD7AFC721F08D3A00DFED80 /* OauthTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD7AFC121F08D3900DFED80 /* OauthTextField.swift */; };
+		CCD7AFC821F08D3A00DFED80 /* GetCodeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD7AFC221F08D3900DFED80 /* GetCodeButton.swift */; };
+		CCD7AFC921F08D3A00DFED80 /* OauthVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD7AFC321F08D3900DFED80 /* OauthVM.swift */; };
+		CCD7AFCA21F08D3A00DFED80 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD7AFC421F08D3900DFED80 /* LoginVC.swift */; };
+		CCD7AFCB21F08D3A00DFED80 /* DefaultButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD7AFC521F08D3900DFED80 /* DefaultButton.swift */; };
+		CCD7AFCC21F08D3A00DFED80 /* OauthModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD7AFC621F08D3900DFED80 /* OauthModel.swift */; };
+		CCD7AFD021F08D5600DFED80 /* URLConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD7AFCE21F08D5600DFED80 /* URLConst.swift */; };
+		CCD7AFD121F08D5600DFED80 /* NetworkTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD7AFCF21F08D5600DFED80 /* NetworkTool.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +79,15 @@
 		CCD7AFB721F0260A00DFED80 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		CCD7AFB921F0267000DFED80 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		CCD7AFBB21F051C300DFED80 /* MineVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineVC.swift; sourceTree = "<group>"; };
+		CCD7AFBF21F07F0200DFED80 /* CCString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCString.swift; sourceTree = "<group>"; };
+		CCD7AFC121F08D3900DFED80 /* OauthTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OauthTextField.swift; sourceTree = "<group>"; };
+		CCD7AFC221F08D3900DFED80 /* GetCodeButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetCodeButton.swift; sourceTree = "<group>"; };
+		CCD7AFC321F08D3900DFED80 /* OauthVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OauthVM.swift; sourceTree = "<group>"; };
+		CCD7AFC421F08D3900DFED80 /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		CCD7AFC521F08D3900DFED80 /* DefaultButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultButton.swift; sourceTree = "<group>"; };
+		CCD7AFC621F08D3900DFED80 /* OauthModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OauthModel.swift; sourceTree = "<group>"; };
+		CCD7AFCE21F08D5600DFED80 /* URLConst.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLConst.swift; sourceTree = "<group>"; };
+		CCD7AFCF21F08D5600DFED80 /* NetworkTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkTool.swift; sourceTree = "<group>"; };
 		CF2599CAE0A8B32B555C5F1C /* Pods-CCSwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CCSwift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CCSwift/Pods-CCSwift.debug.xcconfig"; sourceTree = "<group>"; };
 		E2ABC861788E022FF72589A1 /* Pods_CCSwiftTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CCSwiftTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -127,6 +145,7 @@
 		CC83E00B21EF252B00524B4B /* CCSwift */ = {
 			isa = PBXGroup;
 			children = (
+				CCD7AFBD21F06D0F00DFED80 /* OAuth */,
 				CCD7AFB621F0241800DFED80 /* Tools */,
 				CCD7AFB521F0241000DFED80 /* Mine */,
 				CCD7AFB421F023B300DFED80 /* Home */,
@@ -190,8 +209,40 @@
 		CCD7AFB621F0241800DFED80 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				CCD7AFCD21F08D4600DFED80 /* Network */,
+				CCD7AFBE21F07E8B00DFED80 /* Extension */,
 			);
 			path = Tools;
+			sourceTree = "<group>";
+		};
+		CCD7AFBD21F06D0F00DFED80 /* OAuth */ = {
+			isa = PBXGroup;
+			children = (
+				CCD7AFC521F08D3900DFED80 /* DefaultButton.swift */,
+				CCD7AFC221F08D3900DFED80 /* GetCodeButton.swift */,
+				CCD7AFC421F08D3900DFED80 /* LoginVC.swift */,
+				CCD7AFC621F08D3900DFED80 /* OauthModel.swift */,
+				CCD7AFC121F08D3900DFED80 /* OauthTextField.swift */,
+				CCD7AFC321F08D3900DFED80 /* OauthVM.swift */,
+			);
+			path = OAuth;
+			sourceTree = "<group>";
+		};
+		CCD7AFBE21F07E8B00DFED80 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				CCD7AFBF21F07F0200DFED80 /* CCString.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		CCD7AFCD21F08D4600DFED80 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				CCD7AFCF21F08D5600DFED80 /* NetworkTool.swift */,
+				CCD7AFCE21F08D5600DFED80 /* URLConst.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 		EA321FB45C0027637E326C7C /* Pods */ = {
@@ -404,8 +455,12 @@
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/DNSPageView/DNSPageView.framework",
 				"${BUILT_PRODUCTS_DIR}/FLEX/FLEX.framework",
+				"${BUILT_PRODUCTS_DIR}/HandyJSON/HandyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/ReactiveCocoa/ReactiveCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyTimer/SwiftyTimer.framework",
+				"${BUILT_PRODUCTS_DIR}/Toast-Swift/Toast_Swift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
@@ -414,8 +469,12 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DNSPageView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FLEX.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HandyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyTimer.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Toast_Swift.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -453,12 +512,21 @@
 			files = (
 				CCD7AFB321EF307900DFED80 /* GlobalConst.swift in Sources */,
 				CCD7AFBC21F051C300DFED80 /* MineVC.swift in Sources */,
+				CCD7AFC821F08D3A00DFED80 /* GetCodeButton.swift in Sources */,
+				CCD7AFD021F08D5600DFED80 /* URLConst.swift in Sources */,
 				CCD7AFB121EF300600DFED80 /* Definition.swift in Sources */,
+				CCD7AFC921F08D3A00DFED80 /* OauthVM.swift in Sources */,
+				CCD7AFC721F08D3A00DFED80 /* OauthTextField.swift in Sources */,
+				CCD7AFC021F07F0200DFED80 /* CCString.swift in Sources */,
 				CCD7AFAF21EF2D0900DFED80 /* TabBarController.swift in Sources */,
+				CCD7AFD121F08D5600DFED80 /* NetworkTool.swift in Sources */,
 				CCD7AFB821F0260A00DFED80 /* HomeVC.swift in Sources */,
+				CCD7AFCA21F08D3A00DFED80 /* LoginVC.swift in Sources */,
 				CC83E00F21EF252B00524B4B /* ViewController.swift in Sources */,
+				CCD7AFCC21F08D3A00DFED80 /* OauthModel.swift in Sources */,
 				CCD7AFBA21F0267000DFED80 /* NavigationController.swift in Sources */,
 				CC83E00D21EF252B00524B4B /* AppDelegate.swift in Sources */,
+				CCD7AFCB21F08D3A00DFED80 /* DefaultButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

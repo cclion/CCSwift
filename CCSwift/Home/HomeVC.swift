@@ -34,7 +34,7 @@ class HomeVC: UIViewController {
         view.addSubview(pageView)
 
     }
-    
+  
 
 
 }

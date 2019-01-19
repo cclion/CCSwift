@@ -10,7 +10,7 @@ import UIKit
 
 
 // Base URL
-let passPortBaseURL     = "https://passport.huantengsmart.com/"
+let localhost           = "http://127.0.0.1:8080/"
 let masBaseURL          = "https://mas.huantengsmart.com/"
 let estateBaseURL       = "https://estate.huantengsmart.com/"
 

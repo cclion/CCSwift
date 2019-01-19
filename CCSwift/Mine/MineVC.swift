@@ -15,6 +15,13 @@ class MineVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         super.viewDidLoad()
         self.view.addSubview(self.tableView)
         self.tableView.backgroundView?.addSubview(self.headerImageView)
+        
+        let tapGestureRecognizer = UITapGestureRecognizer.init(target: self, action:#selector(tapGestureClick))
+        // 点击几次触发事件
+        tapGestureRecognizer.numberOfTapsRequired = 1
+        // 几根手指点击触发事件
+        tapGestureRecognizer.numberOfTouchesRequired = 1
+        self.headerImageView.addGestureRecognizer(tapGestureRecognizer)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -22,6 +29,7 @@ class MineVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         // 隐藏导航栏
         self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
+    
     //修改状态栏颜色
     //1、在Info.plist中添加 UIViewControllerBasedStatusBarAppearance 为YES
     //2、添加下面方法
@@ -33,9 +41,11 @@ class MineVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 10
     }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         return UITableViewCell.init()
     }
+    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let width = kScreenWitdh
         let yOffect = scrollView.contentOffset.y + 220
@@ -69,9 +79,15 @@ class MineVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         let imageView = UIImageView.init(frame: CGRect.init(x: 0, y: 0, width: kScreenWitdh, height: 200));
         imageView.image = UIImage.init(named: "icon_mine_headerImage")
         imageView.contentMode = .scaleAspectFill
+        imageView.isUserInteractionEnabled = true
         return imageView
     }()
-    
+    // TODO : tapGestureClick 的事件
+    @objc func tapGestureClick() {
+        //判断:未登录 跳转登录页面
+        let oauthNav = UINavigationController(rootViewController: LoginVC())
+        self.navigationController?.present(oauthNav, animated: true, completion: nil)
+    }
     
 
 }

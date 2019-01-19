@@ -10,7 +10,12 @@ target 'CCSwift' do
   pod 'FLEX', '~> 2.0' #debug
   pod 'DNSPageView' #二级联动
   pod 'SnapKit', '~> 4.0.0' #布局
+  pod 'ReactiveCocoa','2.5' #RC
+  pod 'Toast-Swift' #Toast
+  pod 'HandyJSON' #json转换
+  pod 'SwiftyTimer' #Timer
 
+  
   # Pods for CCSwift
 
   target 'CCSwiftTests' do
