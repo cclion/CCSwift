@@ -12,11 +12,11 @@ import SceneKit
 class MoonSceneVC: UIViewController {
 
     //Const
-    let moonRedis: CGFloat = 50.0
-    let DECELERATION_RATE: CGFloat = 0.85
-    let speed: CGFloat = 0.02
+    let MOONREDIS: CGFloat = 50.0                   //月球半径
+    let DECELERATION_RATE: CGFloat = 0.85           //惯性时速度衰减比例
+    let SPEED: CGFloat = 0.02                       //惯性时每帧的速度
     
-    
+    //模型节点
     var moonNode: SCNNode = SCNNode.init()
     
     //用于记录月球当前状态距上一次静止状态的偏移量  也是众多状态set的唯一参数
@@ -49,7 +49,7 @@ class MoonSceneVC: UIViewController {
         let scene = SCNScene()
         scnView.scene = scene
         
-        let moon = SCNSphere.init(radius: moonRedis)
+        let moon = SCNSphere.init(radius: MOONREDIS)
         moon.segmentCount = 100 //渲染网格数 越多越逼真 消耗越大
         moon.firstMaterial?.diffuse.contents = UIImage.init(named: "bg_func_moon")
         moonNode.geometry = moon
@@ -59,7 +59,7 @@ class MoonSceneVC: UIViewController {
         let cameraNode = SCNNode.init()
         cameraNode.camera = SCNCamera.init()
         cameraNode.camera?.automaticallyAdjustsZRange = true
-        cameraNode.position = SCNVector3Make(0, 0, Float(moonRedis * 5));
+        cameraNode.position = SCNVector3Make(0, 0, Float(MOONREDIS * 5));
         scene.rootNode.addChildNode(cameraNode)
 
         let panGes = UIPanGestureRecognizer.init(target: self, action:  #selector(panAction(panges:)))
@@ -76,7 +76,7 @@ class MoonSceneVC: UIViewController {
         
         let panX = panges.translation(in: self.view).x
         let panY = panges.translation(in: self.view).y
-        
+        //2、将手势位置复制给moon当做偏移量
         moonXOffect = panX
         moonYOffect = panY
         
@@ -117,13 +117,13 @@ class MoonSceneVC: UIViewController {
         displayLink.invalidate()
         
     }
-    
+    // 根据当前速度减速
     @objc func decelerationStep() -> () {
         //1、获取当前速度
         let newVelocity = CGPoint.init(x: self.velocityPoint.x * DECELERATION_RATE, y: self.velocityPoint.y * DECELERATION_RATE)
         //2、设置位置距离
-        let moveX = newVelocity.x * speed
-        let moveY = newVelocity.y * speed
+        let moveX = newVelocity.x * SPEED
+        let moveY = newVelocity.y * SPEED
         //3、修改moon偏移量 并刷新
         moonXOffect += moveX
         moonYOffect += moveY
