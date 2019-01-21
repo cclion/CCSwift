@@ -13,14 +13,12 @@ class TabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
-        
         self.setupChildController(HomeVC(), iconImageStr: "icon_tabbar_home", title: "首页")
         self.setupChildController(ViewController(), iconImageStr: "icon_tabbar_QRcode", title: "扫描")
-        self.setupChildController(ViewController(), iconImageStr: "icon_tabbar_other", title: "其他")
+        self.setupChildController(FuncVC(), iconImageStr: "icon_tabbar_other", title: "功能列表")
         self.setupChildController(MineVC(), iconImageStr: "icon_tabbar_mine", title: "我的")
 
-
+        self.automaticallyAdjustsScrollViewInsets = true
     }
     
    
@@ -33,7 +31,7 @@ class TabBarController: UITabBarController {
         childController.tabBarItem.title = title
         childController.tabBarItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor:logoColor], for: .normal)
         childController.tabBarItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor:logoColor], for: .selected)
-        self.addChild(UINavigationController.init(rootViewController: childController))
+        self.addChild(NavigationController.init(rootViewController: childController))
     }
     
 

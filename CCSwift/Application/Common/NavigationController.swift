@@ -8,23 +8,21 @@
 
 import UIKit
 
-class NavigationController: UINavigationController {
+class NavigationController: UINavigationController,UINavigationControllerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.delegate = self
         // Do any additional setup after loading the view.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    // 隐藏二级界面的Tabbar
+    override func pushViewController(_ viewController: UIViewController, animated: Bool) {
+        if self.viewControllers.count == 1{
+           viewController.hidesBottomBarWhenPushed = true
+        }
+        super.pushViewController(viewController, animated: animated)
     }
-    */
+
 
 }
