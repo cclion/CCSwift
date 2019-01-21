@@ -145,16 +145,17 @@
 		CC83E00B21EF252B00524B4B /* CCSwift */ = {
 			isa = PBXGroup;
 			children = (
-				CCD7AFBD21F06D0F00DFED80 /* OAuth */,
+				CC89217521F5781200330991 /* New Group */,
+				CC89217421F577DA00330991 /* Config */,
+				CC89217221F576FF00330991 /* Application */,
+				CC89217121F5765500330991 /* Const */,
 				CCD7AFB621F0241800DFED80 /* Tools */,
-				CCD7AFB521F0241000DFED80 /* Mine */,
-				CCD7AFB421F023B300DFED80 /* Home */,
 				CCD7AFAC21EF28BB00DFED80 /* Main */,
 				CC83E00E21EF252B00524B4B /* ViewController.swift */,
 				CC83E01021EF252B00524B4B /* Main.storyboard */,
 				CC83E01321EF252C00524B4B /* Assets.xcassets */,
-				CC83E01521EF252C00524B4B /* LaunchScreen.storyboard */,
 				CC83E01821EF252C00524B4B /* Info.plist */,
+				CC83E01521EF252C00524B4B /* LaunchScreen.storyboard */,
 			);
 			path = CCSwift;
 			sourceTree = "<group>";
@@ -177,15 +178,54 @@
 			path = CCSwiftUITests;
 			sourceTree = "<group>";
 		};
-		CCD7AFAC21EF28BB00DFED80 /* Main */ = {
+		CC89217121F5765500330991 /* Const */ = {
+			isa = PBXGroup;
+			children = (
+				CCD7AFB221EF307900DFED80 /* GlobalConst.swift */,
+			);
+			path = Const;
+			sourceTree = "<group>";
+		};
+		CC89217221F576FF00330991 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				CC89217321F5772D00330991 /* Common */,
+				CCD7AFB421F023B300DFED80 /* Home */,
+				CCD7AFB521F0241000DFED80 /* Mine */,
+				CCD7AFBD21F06D0F00DFED80 /* OAuth */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		CC89217321F5772D00330991 /* Common */ = {
 			isa = PBXGroup;
 			children = (
 				CC83E00C21EF252B00524B4B /* AppDelegate.swift */,
 				CCD7AFAE21EF2D0900DFED80 /* TabBarController.swift */,
 				CCD7AFB921F0267000DFED80 /* NavigationController.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		CC89217421F577DA00330991 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+		CC89217521F5781200330991 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
+			sourceTree = "<group>";
+		};
+		CCD7AFAC21EF28BB00DFED80 /* Main */ = {
+			isa = PBXGroup;
+			children = (
 				CCD7AFAD21EF28FA00DFED80 /* Bridging-Header.h */,
 				CCD7AFB021EF300600DFED80 /* Definition.swift */,
-				CCD7AFB221EF307900DFED80 /* GlobalConst.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
