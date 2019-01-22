@@ -20,6 +20,15 @@
 		CC89217821F57A8E00330991 /* FuncVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC89217721F57A8E00330991 /* FuncVC.swift */; };
 		CC89217A21F597E500330991 /* CCObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC89217921F597E500330991 /* CCObject.swift */; };
 		CC89217D21F59D5100330991 /* MoonSceneVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC89217C21F59D5100330991 /* MoonSceneVC.swift */; };
+		CC89218221F6E1DC00330991 /* KLineConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC89218121F6E1DC00330991 /* KLineConst.swift */; };
+		CC89218421F6E60400330991 /* KLineVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC89218321F6E60400330991 /* KLineVC.swift */; };
+		CC89218A21F6ED8300330991 /* KLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC89218921F6ED8300330991 /* KLineView.swift */; };
+		CC89218C21F6EFB500330991 /* KLinePriceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC89218B21F6EFB500330991 /* KLinePriceView.swift */; };
+		CC89219021F6FD3A00330991 /* KLineVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC89218F21F6FD3A00330991 /* KLineVM.swift */; };
+		CC89219221F6FF2200330991 /* data.plist in Resources */ = {isa = PBXBuildFile; fileRef = CC89219121F6FF2200330991 /* data.plist */; };
+		CC89219421F6FF3F00330991 /* KLineData.plist in Resources */ = {isa = PBXBuildFile; fileRef = CC89219321F6FF3F00330991 /* KLineData.plist */; };
+		CC89219621F7053B00330991 /* KLineModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC89219521F7053B00330991 /* KLineModel.swift */; };
+		CC89219821F7142300330991 /* KLinePriceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC89219721F7142300330991 /* KLinePriceCell.swift */; };
 		CCD7AFAF21EF2D0900DFED80 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD7AFAE21EF2D0900DFED80 /* TabBarController.swift */; };
 		CCD7AFB121EF300600DFED80 /* Definition.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD7AFB021EF300600DFED80 /* Definition.swift */; };
 		CCD7AFB321EF307900DFED80 /* GlobalConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD7AFB221EF307900DFED80 /* GlobalConst.swift */; };
@@ -78,6 +87,15 @@
 		CC89217721F57A8E00330991 /* FuncVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuncVC.swift; sourceTree = "<group>"; };
 		CC89217921F597E500330991 /* CCObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCObject.swift; sourceTree = "<group>"; };
 		CC89217C21F59D5100330991 /* MoonSceneVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoonSceneVC.swift; sourceTree = "<group>"; };
+		CC89218121F6E1DC00330991 /* KLineConst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KLineConst.swift; sourceTree = "<group>"; };
+		CC89218321F6E60400330991 /* KLineVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KLineVC.swift; sourceTree = "<group>"; };
+		CC89218921F6ED8300330991 /* KLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KLineView.swift; sourceTree = "<group>"; };
+		CC89218B21F6EFB500330991 /* KLinePriceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KLinePriceView.swift; sourceTree = "<group>"; };
+		CC89218F21F6FD3A00330991 /* KLineVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KLineVM.swift; sourceTree = "<group>"; };
+		CC89219121F6FF2200330991 /* data.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = data.plist; sourceTree = "<group>"; };
+		CC89219321F6FF3F00330991 /* KLineData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = KLineData.plist; sourceTree = "<group>"; };
+		CC89219521F7053B00330991 /* KLineModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KLineModel.swift; sourceTree = "<group>"; };
+		CC89219721F7142300330991 /* KLinePriceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KLinePriceCell.swift; sourceTree = "<group>"; };
 		CCD7AFAD21EF28FA00DFED80 /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		CCD7AFAE21EF2D0900DFED80 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		CCD7AFB021EF300600DFED80 /* Definition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Definition.swift; sourceTree = "<group>"; };
@@ -159,6 +177,8 @@
 				CCD7AFAC21EF28BB00DFED80 /* Main */,
 				CC83E00E21EF252B00524B4B /* ViewController.swift */,
 				CC83E01021EF252B00524B4B /* Main.storyboard */,
+				CC89219321F6FF3F00330991 /* KLineData.plist */,
+				CC89219121F6FF2200330991 /* data.plist */,
 				CC83E01321EF252C00524B4B /* Assets.xcassets */,
 				CC83E01821EF252C00524B4B /* Info.plist */,
 				CC83E01521EF252C00524B4B /* LaunchScreen.storyboard */,
@@ -232,6 +252,8 @@
 			isa = PBXGroup;
 			children = (
 				CC89217721F57A8E00330991 /* FuncVC.swift */,
+				CC89218021F5DAF700330991 /* ShortCut */,
+				CC89217F21F5DAD800330991 /* KLine */,
 				CC89217B21F59D1600330991 /* Scene */,
 			);
 			path = Func;
@@ -243,6 +265,67 @@
 				CC89217C21F59D5100330991 /* MoonSceneVC.swift */,
 			);
 			path = Scene;
+			sourceTree = "<group>";
+		};
+		CC89217F21F5DAD800330991 /* KLine */ = {
+			isa = PBXGroup;
+			children = (
+				CC89218E21F6FD1500330991 /* ViewModel */,
+				CC89218821F6ED6A00330991 /* Model */,
+				CC89218721F6ED5E00330991 /* Const */,
+				CC89218621F6ECB000330991 /* View */,
+				CC89218521F6ECA400330991 /* Controller */,
+			);
+			path = KLine;
+			sourceTree = "<group>";
+		};
+		CC89218021F5DAF700330991 /* ShortCut */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ShortCut;
+			sourceTree = "<group>";
+		};
+		CC89218521F6ECA400330991 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				CC89218321F6E60400330991 /* KLineVC.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		CC89218621F6ECB000330991 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CC89218921F6ED8300330991 /* KLineView.swift */,
+				CC89218B21F6EFB500330991 /* KLinePriceView.swift */,
+				CC89219721F7142300330991 /* KLinePriceCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CC89218721F6ED5E00330991 /* Const */ = {
+			isa = PBXGroup;
+			children = (
+				CC89218121F6E1DC00330991 /* KLineConst.swift */,
+			);
+			path = Const;
+			sourceTree = "<group>";
+		};
+		CC89218821F6ED6A00330991 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CC89219521F7053B00330991 /* KLineModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CC89218E21F6FD1500330991 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				CC89218F21F6FD3A00330991 /* KLineVM.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		CCD7AFAC21EF28BB00DFED80 /* Main */ = {
@@ -442,7 +525,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				CC83E01721EF252C00524B4B /* LaunchScreen.storyboard in Resources */,
+				CC89219421F6FF3F00330991 /* KLineData.plist in Resources */,
 				CC83E01421EF252C00524B4B /* Assets.xcassets in Resources */,
+				CC89219221F6FF2200330991 /* data.plist in Resources */,
 				CC83E01221EF252B00524B4B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -523,6 +608,7 @@
 				"${BUILT_PRODUCTS_DIR}/HandyJSON/HandyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/ReactiveCocoa/ReactiveCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyBeaver/SwiftyBeaver.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyTimer/SwiftyTimer.framework",
 				"${BUILT_PRODUCTS_DIR}/Toast-Swift/Toast_Swift.framework",
@@ -537,6 +623,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HandyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyBeaver.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyTimer.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Toast_Swift.framework",
@@ -575,6 +662,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC89218C21F6EFB500330991 /* KLinePriceView.swift in Sources */,
+				CC89218221F6E1DC00330991 /* KLineConst.swift in Sources */,
 				CCD7AFB321EF307900DFED80 /* GlobalConst.swift in Sources */,
 				CCD7AFBC21F051C300DFED80 /* MineVC.swift in Sources */,
 				CC89217821F57A8E00330991 /* FuncVC.swift in Sources */,
@@ -582,13 +671,18 @@
 				CC89217D21F59D5100330991 /* MoonSceneVC.swift in Sources */,
 				CCD7AFD021F08D5600DFED80 /* URLConst.swift in Sources */,
 				CCD7AFB121EF300600DFED80 /* Definition.swift in Sources */,
+				CC89218421F6E60400330991 /* KLineVC.swift in Sources */,
 				CCD7AFC921F08D3A00DFED80 /* OauthVM.swift in Sources */,
+				CC89219821F7142300330991 /* KLinePriceCell.swift in Sources */,
 				CCD7AFC721F08D3A00DFED80 /* OauthTextField.swift in Sources */,
 				CCD7AFC021F07F0200DFED80 /* CCString.swift in Sources */,
 				CCD7AFAF21EF2D0900DFED80 /* TabBarController.swift in Sources */,
 				CCD7AFD121F08D5600DFED80 /* NetworkTool.swift in Sources */,
 				CCD7AFB821F0260A00DFED80 /* HomeVC.swift in Sources */,
+				CC89218A21F6ED8300330991 /* KLineView.swift in Sources */,
+				CC89219621F7053B00330991 /* KLineModel.swift in Sources */,
 				CCD7AFCA21F08D3A00DFED80 /* LoginVC.swift in Sources */,
+				CC89219021F6FD3A00330991 /* KLineVM.swift in Sources */,
 				CC83E00F21EF252B00524B4B /* ViewController.swift in Sources */,
 				CCD7AFCC21F08D3A00DFED80 /* OauthModel.swift in Sources */,
 				CCD7AFBA21F0267000DFED80 /* NavigationController.swift in Sources */,

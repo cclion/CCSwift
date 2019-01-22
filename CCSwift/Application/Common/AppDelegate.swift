@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.backgroundColor = UIColor.white;
         window?.rootViewController = TabBarController();
 
-        FLEXManager.shared().showExplorer()
+//        FLEXManager.shared().showExplorer()
         return true
     }
 

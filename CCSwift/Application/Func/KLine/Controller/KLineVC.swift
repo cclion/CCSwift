@@ -15,9 +15,10 @@ class KLineVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-
-
+        self.view.backgroundColor = UIColor.white
+        
+        let kLineView = KLineView.init(frame: CGRect.init(x: 0, y: 200, width: kLineViewWitdh, height: kLineViewHeight))
+        self.view.addSubview(kLineView)
     }
     
 

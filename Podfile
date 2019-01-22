@@ -14,8 +14,9 @@ target 'CCSwift' do
   pod 'Toast-Swift' #Toast
   pod 'HandyJSON' #json转换
   pod 'SwiftyTimer' #Timer
+  pod 'SwiftyBeaver' #彩色log
+#JSONExport
 
-  
   # Pods for CCSwift
 
   target 'CCSwiftTests' do

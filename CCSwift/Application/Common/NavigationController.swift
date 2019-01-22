@@ -23,6 +23,4 @@ class NavigationController: UINavigationController,UINavigationControllerDelegat
         }
         super.pushViewController(viewController, animated: animated)
     }
-
-
 }

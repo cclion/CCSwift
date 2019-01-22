@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import SwiftyBeaver
+
+let log = SwiftyBeaver.self
 
 // 定义颜色
 func RGBColor(r:CGFloat,g:CGFloat,b:CGFloat) ->UIColor{

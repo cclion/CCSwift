@@ -11,15 +11,38 @@ import Foundation
 /// 视图宽度
 let kLineViewWitdh: CGFloat = UIScreen.main.bounds.width
 
-/// 日K线数据
+// MARK:- 日K线数据
 //1、价格走势部分
+/// K线价格视图高度（含两边边距）
 let kLinePriceViewHeight: CGFloat = kLineViewWitdh * 0.75
+/// K线价格视图边距
 let kLinePriceViewSeg: CGFloat = 10
 
 //2、间隔
+/// K线价格视图和交易量视图间距
 let kLineViewInterval: CGFloat = 30
 
 //3、交易量部分
+/// K线交易量视图高度（自身无边距）
 let kLineCountViewHeight: CGFloat = kLineViewWitdh * 0.25
+
+let kLineViewCellDefaultHeight: CGFloat = 30
+/// K线视图总高度
 let kLineViewHeight: CGFloat = kLinePriceViewHeight + kLineCountViewHeight + kLineViewInterval
+
+
+
+
+
+
+
+
+
+
+/// K线视图价格cell reuseIdentifier
+let kLinePriceRID = "KLinePriceRID"
+
+
+
+
 

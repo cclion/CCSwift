@@ -18,7 +18,7 @@ class TabBarController: UITabBarController {
         self.setupChildController(FuncVC(), iconImageStr: "icon_tabbar_other", title: "功能列表")
         self.setupChildController(MineVC(), iconImageStr: "icon_tabbar_mine", title: "我的")
 
-        self.automaticallyAdjustsScrollViewInsets = true
+//        self.automaticallyAdjustsScrollViewInsets = true
     }
     
    

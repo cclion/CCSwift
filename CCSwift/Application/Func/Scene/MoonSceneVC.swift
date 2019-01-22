@@ -4,7 +4,7 @@
 //
 //  Created by job on 2019/1/21.
 //  Copyright © 2019 我是花轮. All rights reserved.
-//
+//  3D模型惯性旋转 
 
 import UIKit
 import SceneKit

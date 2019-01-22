@@ -7,7 +7,19 @@
 //
 
 import UIKit
+import HandyJSON
+struct KLineModel: HandyJSON {
 
-class KLineModel: NSObject {
+    var closeprice: Double = 0
+    var openprice: Double = 0
+    var highestprice: Double = 0
+    var lowestprice: Double = 0
 
+//    lazy var isUp: Bool = openprice.st
+    
 }
+
+
+
+
+

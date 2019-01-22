@@ -11,6 +11,7 @@ PODS:
   - ReactiveCocoa/UI (2.5):
     - ReactiveCocoa/Core
   - SnapKit (4.0.1)
+  - SwiftyBeaver (1.6.1)
   - SwiftyJSON (4.2.0)
   - SwiftyTimer (2.1.0)
   - Toast-Swift (4.0.0)
@@ -22,6 +23,7 @@ DEPENDENCIES:
   - HandyJSON
   - ReactiveCocoa (= 2.5)
   - SnapKit (~> 4.0.0)
+  - SwiftyBeaver
   - SwiftyJSON (~> 4.0)
   - SwiftyTimer
   - Toast-Swift
@@ -34,6 +36,7 @@ SPEC REPOS:
     - HandyJSON
     - ReactiveCocoa
     - SnapKit
+    - SwiftyBeaver
     - SwiftyJSON
     - SwiftyTimer
     - Toast-Swift
@@ -45,10 +48,11 @@ SPEC CHECKSUMS:
   HandyJSON: 9dfc026c7d7adc1f0f8ba8b181495f0e0763b0f4
   ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
   SnapKit: 0de968a9fec17499afa29683b05d0c775b6d1c29
+  SwiftyBeaver: ccfcdf85a04d429f1633f668650b0ce8020bda3a
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
   SwiftyTimer: 02dd6cf10cbc71cbf67cec494f6e5eb782102543
   Toast-Swift: 594b5c5e5129f15438e410207e43287f027b3c00
 
-PODFILE CHECKSUM: 9f48eac55cfb9c9001f2e82955ccb5a22f42ac0d
+PODFILE CHECKSUM: 30044d133bd93c1ff7ce11754ccc24b37156a2ab
 
 COCOAPODS: 1.5.3
