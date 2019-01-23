@@ -9,6 +9,9 @@
 import UIKit
 class KLinePriceView: UITableView, UITableViewDelegate, UITableViewDataSource{
     
+    let maxLabel = UILabel.init()
+    let minLabel = UILabel.init()
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return KLineVM.sharedInstance.data.count
     }
@@ -17,9 +20,15 @@ class KLinePriceView: UITableView, UITableViewDelegate, UITableViewDataSource{
         // 创建复用cell 并且传递index
         // 传递index是因为cell还要获取旁边两个cell的数据完成均线 传递的index可以借助VM实现数据获取 
         let cell = KLinePriceCell.init(style: .default, reuseIdentifier: kLinePriceRID)
+        // 🔥渲染之前先计算出当前页面即将展示的所有数据的极值
         self.findExtreNum()
         cell.index = indexPath.row
+        
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "max---" + String.init(format:"%.2f",KLineVM.sharedInstance.priceMax) + "min---" + String.init(format:"%.2f",KLineVM.sharedInstance.priceMin )
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -27,38 +36,49 @@ class KLinePriceView: UITableView, UITableViewDelegate, UITableViewDataSource{
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let indexs = self.indexPathsForVisibleRows
-        print(indexs?.count)
+        let mainQueue = DispatchQueue.main
+        mainQueue.async {
+             self.findExtreNum()
+        }
     }
     
     /// 找到当前列表展示的数据极值
     func findExtreNum() {
         // 获取当前展示的cells的Indexpath数组
         let indexs = self.indexPathsForVisibleRows
+        print("-----------")
+        print(self.visibleCells.count)
+        print(indexs?.count ?? 0)
         // 用于记录极值是否有变化 有变化则需要刷新cell
-        var isShouldRefresh = false
+        
+        var max: CGFloat = 0
+        var min: CGFloat = 0
         
         for indexPath in indexs! {
             let data = KLineVM.sharedInstance.data[indexPath.row]
         
-            let dataMax: CGFloat = CGFloat([data.highestprice, data.lowestprice, data.openprice, data.closeprice].max()!)
-            let dataMin: CGFloat = CGFloat([data.highestprice, data.lowestprice, data.openprice, data.closeprice].min()!)
+            let dataMax: CGFloat = CGFloat([data.openprice, data.closeprice].max()!)
+            let dataMin: CGFloat = CGFloat([data.openprice, data.closeprice].min()!)
             
-            if KLineVM.sharedInstance.priceMax == 0 || dataMax > KLineVM.sharedInstance.priceMax{
-                KLineVM.sharedInstance.priceMax = dataMax
-                isShouldRefresh = true
+            if max == 0 || dataMax > max{
+                max = dataMax
             }
-            if KLineVM.sharedInstance.priceMin == 0 || dataMin < KLineVM.sharedInstance.priceMin{
-                KLineVM.sharedInstance.priceMin = dataMin
-                isShouldRefresh = true
+            if min == 0 || dataMin < min{
+                min = dataMin
             }
         }
         
-        if isShouldRefresh{
-            self.reloadData()
+        if KLineVM.sharedInstance.priceMax == 0 || max != KLineVM.sharedInstance.priceMax{
+            KLineVM.sharedInstance.priceMax = max
+        }
+        if KLineVM.sharedInstance.priceMin == 0 || min != KLineVM.sharedInstance.priceMin{
+            KLineVM.sharedInstance.priceMin = min
         }
     }
     
+    func configerSubViews() {
+       
+    }
     
     override init(frame: CGRect, style: UITableView.Style) {
         super.init(frame: frame, style: style)

@@ -26,13 +26,38 @@ class KLineVM: NSObject {
     /// cell高度
     var cellHeight = kLineViewCellDefaultHeight
     /// price极高值 默认0
-    var priceMax: CGFloat = 0
-    /// price极高值 默认0
+    var priceMax: CGFloat = 10
+    /// price极小值 默认0
     var priceMin: CGFloat = 0
+
+    /// 计算价格K线柱在cell中的位置
+    ///
+    /// - Parameter data: 数据
+    /// - Returns: 位置
+    public func getKLineRect(_ data: KLineModel) -> CGRect {
+        
+        let dataMax: CGFloat = CGFloat([data.openprice, data.closeprice].max()!)
+        let dataMin: CGFloat = CGFloat([data.openprice, data.closeprice].min()!)
+        
+        let rect = CGRect.init(x: self.getKLineTopDis(dataMax), y: kLinePriceViewCellSeg, width: self.getKLineTopDis(dataMin) - self.getKLineTopDis(dataMax), height: kLineViewCellDefaultHeight - 2 * kLinePriceViewCellSeg)
+        
+//        print(String.init(format:"%.2f",CGFloat(self.getKLineTopDis(dataMax))) + String.init(format:"%.2f",CGFloat(self.getKLineTopDis(dataMin))))
+        return rect
+    }
     
-//    func getKLineLeftDis(_ data: CGFloat) -> CGFloat {
-//        
-//    }
+    /// 计算这个值在cell中距上方位置
+    ///
+    /// - Parameter data: 数值
+    /// - Returns:距上方位置
+    private func getKLineTopDis(_ data: CGFloat) -> CGFloat {
+
+        // 假如当前数据没有最高值 返回0
+        if priceMax == 0 {
+            return 0
+        }
+        let top = (priceMax - data) / (priceMax - priceMin) * (kLinePriceViewHeight - kLinePriceViewSeg * 2) + kLinePriceViewSeg
+        return top
+    }
     
     
 }

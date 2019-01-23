@@ -35,6 +35,9 @@ class HomeVC: UIViewController {
 
     }
   
-
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.pushViewController(KLineVC(), animated: true)
+    }
 
 }
