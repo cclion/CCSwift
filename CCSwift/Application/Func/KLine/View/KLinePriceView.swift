@@ -46,19 +46,17 @@ class KLinePriceView: UITableView, UITableViewDelegate, UITableViewDataSource{
     func findExtreNum() {
         // 获取当前展示的cells的Indexpath数组
         let indexs = self.indexPathsForVisibleRows
-        print("-----------")
-        print(self.visibleCells.count)
-        print(indexs?.count ?? 0)
+      
         // 用于记录极值是否有变化 有变化则需要刷新cell
-        
+
         var max: CGFloat = 0
         var min: CGFloat = 0
-        
+      
         for indexPath in indexs! {
             let data = KLineVM.sharedInstance.data[indexPath.row]
         
-            let dataMax: CGFloat = CGFloat([data.openprice, data.closeprice].max()!)
-            let dataMin: CGFloat = CGFloat([data.openprice, data.closeprice].min()!)
+            let dataMax: CGFloat = CGFloat([data.highestprice, data.lowestprice].max()!)
+            let dataMin: CGFloat = CGFloat([data.highestprice, data.lowestprice].min()!)
             
             if max == 0 || dataMax > max{
                 max = dataMax
@@ -68,12 +66,23 @@ class KLinePriceView: UITableView, UITableViewDelegate, UITableViewDataSource{
             }
         }
         
+        // 🔥极值变化 发送通知
         if KLineVM.sharedInstance.priceMax == 0 || max != KLineVM.sharedInstance.priceMax{
             KLineVM.sharedInstance.priceMax = max
+            
+            let notificationName = Notification.Name(rawValue: KLinePriceExtremumChangeNotification)
+            NotificationCenter.default.post(name: notificationName, object: self,
+                                            userInfo: nil)
+            
         }
         if KLineVM.sharedInstance.priceMin == 0 || min != KLineVM.sharedInstance.priceMin{
             KLineVM.sharedInstance.priceMin = min
+            
+            let notificationName = Notification.Name(rawValue: KLinePriceExtremumChangeNotification)
+            NotificationCenter.default.post(name: notificationName, object: self,
+                                            userInfo: nil)
         }
+        
     }
     
     func configerSubViews() {

@@ -49,7 +49,7 @@ class KLineVM: NSObject {
     ///
     /// - Parameter data: 数值
     /// - Returns:距上方位置
-    private func getKLineTopDis(_ data: CGFloat) -> CGFloat {
+    public func getKLineTopDis(_ data: CGFloat) -> CGFloat {
 
         // 假如当前数据没有最高值 返回0
         if priceMax == 0 {

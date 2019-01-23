@@ -28,19 +28,16 @@ let kLineViewInterval: CGFloat = 30
 /// K线交易量视图高度（自身无边距）
 let kLineCountViewHeight: CGFloat = kLineViewWitdh * 0.25
 
-let kLineViewCellDefaultHeight: CGFloat = 30
+let kLineViewCellDefaultHeight: CGFloat = 10
 /// K线视图总高度
 let kLineViewHeight: CGFloat = kLinePriceViewHeight + kLineCountViewHeight + kLineViewInterval
-
-
-
-
 
 
 /// K线视图价格cell reuseIdentifier
 let kLinePriceRID = "KLinePriceRID"
 
-
+/// K线价格视图极值发生变化
+let KLinePriceExtremumChangeNotification = "KLinePriceExtremumChangeNotification"
 
 
 

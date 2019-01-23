@@ -30,19 +30,45 @@ class KLinePriceCell: UITableViewCell {
         }
     }
     lazy var pillarLayer = CAShapeLayer.init()
-    
-    func layoutSubViews() {
+    lazy var lineLayer = CAShapeLayer.init()
+
+    @objc func layoutSubViews() {
+        
+        if currData == nil{
+            return
+        }
         
         let pillarLayerPath = UIBezierPath.init(rect: KLineVM.sharedInstance.getKLineRect(currData!))
         pillarLayer.path = pillarLayerPath.cgPath
         
-        maxLabel.text = String.init(format:"%.2f",KLineVM.sharedInstance.priceMax) + "---" + String.init(format:"%.2f",CGFloat([currData!.openprice, currData!.closeprice].max()!))
-        minLabel.text = String.init(format:"%.2f",CGFloat([currData!.openprice, currData!.closeprice].min()!)) + "---" + String.init(format:"%.2f",KLineVM.sharedInstance.priceMin )
-       
+        let lineLayerPath = UIBezierPath.init()
+        lineLayerPath.move(to: CGPoint.init(x: KLineVM.sharedInstance.getKLineTopDis(CGFloat(currData!.highestprice)), y: KLineVM.sharedInstance.cellHeight / 2))
+        lineLayerPath.addLine(to: CGPoint.init(x: KLineVM.sharedInstance.getKLineTopDis(CGFloat(currData!.lowestprice)), y: KLineVM.sharedInstance.cellHeight / 2))
+        lineLayer.path = lineLayerPath.cgPath
+        
+        // 升了
+        if currData!.closeprice >= currData!.openprice {
+            pillarLayer.fillColor = UIColor.red.cgColor
+            lineLayer.strokeColor = UIColor.red.cgColor
+        }else{
+            pillarLayer.fillColor = UIColor.green.cgColor
+            lineLayer.strokeColor = UIColor.green.cgColor
+        }
+        
+        // Debug
+//        maxLabel.text = String.init(format:"%.2f",KLineVM.sharedInstance.priceMax) + "---" + String.init(format:"%.2f",CGFloat([currData!.openprice, currData!.closeprice].max()!))
+//        minLabel.text = String.init(format:"%.2f",CGFloat([currData!.openprice, currData!.closeprice].min()!)) + "---" + String.init(format:"%.2f",KLineVM.sharedInstance.priceMin )
+//       
     }
     
     func configerSubViews() {
+        
+        lineLayer.lineWidth = 1
+
+        
         self.contentView.layer.addSublayer(pillarLayer)
+        self.contentView.layer.addSublayer(lineLayer)
+
         self.addSubview(maxLabel)
         self.addSubview(minLabel)
         maxLabel.frame = CGRect.init(x: 0, y: 0, width: 100, height: 20)
@@ -54,11 +80,22 @@ class KLinePriceCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        self.selectionStyle = .none
+    
+        let notificationName = Notification.Name(rawValue: KLinePriceExtremumChangeNotification)
+        NotificationCenter.default.addObserver(self,
+                                               selector:#selector(layoutSubViews),
+                                               name: notificationName, object: nil)
+        
         self.configerSubViews()
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
     
     override func awakeFromNib() {

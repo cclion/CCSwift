@@ -16,6 +16,7 @@ class KLineView: UIView {
         super.init(frame: frame)
         
         self.addSubview(priceView)
+        priceView.layer.borderWidth = 1
         priceView.transform = CGAffineTransform( rotationAngle: CGFloat(.pi * 0.5));
         priceView.frame = CGRect.init(x: 0, y: 0, width: kLineViewWitdh, height: kLinePriceViewHeight)
                     
