@@ -39,7 +39,7 @@ class KLineVM: NSObject {
         let dataMax: CGFloat = CGFloat([data.openprice, data.closeprice].max()!)
         let dataMin: CGFloat = CGFloat([data.openprice, data.closeprice].min()!)
         
-        let rect = CGRect.init(x: self.getKLineTopDis(dataMax), y: kLinePriceViewCellSeg, width: self.getKLineTopDis(dataMin) - self.getKLineTopDis(dataMax), height: kLineViewCellDefaultHeight - 2 * kLinePriceViewCellSeg)
+        let rect = CGRect.init(x: self.getKLineTopDis(dataMax), y: kLinePriceViewCellSeg, width: self.getKLineTopDis(dataMin) - self.getKLineTopDis(dataMax), height: cellHeight - 2 * kLinePriceViewCellSeg)
         
 //        print(String.init(format:"%.2f",CGFloat(self.getKLineTopDis(dataMax))) + String.init(format:"%.2f",CGFloat(self.getKLineTopDis(dataMin))))
         return rect
