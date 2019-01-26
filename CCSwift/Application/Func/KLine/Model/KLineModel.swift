@@ -14,6 +14,8 @@ struct KLineModel: HandyJSON {
     var openprice: Double = 0
     var highestprice: Double = 0
     var lowestprice: Double = 0
+    var turnovervol: Double = 0    //交易量
+
 
 //    lazy var isUp: Bool = openprice.st
     

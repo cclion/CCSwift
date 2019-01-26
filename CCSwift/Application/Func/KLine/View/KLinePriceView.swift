@@ -7,7 +7,7 @@
 //
 
 import UIKit
-class KLinePriceView: UITableView, UITableViewDelegate, UITableViewDataSource{
+class KLinePriceView: UITableView, UITableViewDelegate, UITableViewDataSource {
     
     var cellLastHeight = KLineVM.sharedInstance.cellHeight
     
@@ -34,20 +34,12 @@ class KLinePriceView: UITableView, UITableViewDelegate, UITableViewDataSource{
         return KLineVM.sharedInstance.cellHeight
     }
     
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let mainQueue = DispatchQueue.main
-        mainQueue.async {
-             self.findExtreNum()
-        }
-    }
-    
     /// 🔥找到当前列表展示的数据极值
     func findExtreNum() {
         // 获取当前展示的cells的Indexpath数组
         let indexs = self.indexPathsForVisibleRows
       
         // 用于记录极值是否有变化 有变化则需要刷新cell
-
         var max: CGFloat = 0
         var min: CGFloat = 0
       
@@ -60,6 +52,7 @@ class KLinePriceView: UITableView, UITableViewDelegate, UITableViewDataSource{
             if max == 0 || dataMax > max{
                 max = dataMax
             }
+            
             if min == 0 || dataMin < min{
                 min = dataMin
             }

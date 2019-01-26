@@ -38,12 +38,12 @@ class KLinePriceCell: UITableViewCell {
             return
         }
         
-        let pillarLayerPath = UIBezierPath.init(rect: KLineVM.sharedInstance.getKLineRect(currData!))
+        let pillarLayerPath = UIBezierPath.init(rect: KLineVM.sharedInstance.getKLinePriceRect(currData!))
         pillarLayer.path = pillarLayerPath.cgPath
         
         let lineLayerPath = UIBezierPath.init()
-        lineLayerPath.move(to: CGPoint.init(x: KLineVM.sharedInstance.getKLineTopDis(CGFloat(currData!.highestprice)), y: KLineVM.sharedInstance.cellHeight / 2))
-        lineLayerPath.addLine(to: CGPoint.init(x: KLineVM.sharedInstance.getKLineTopDis(CGFloat(currData!.lowestprice)), y: KLineVM.sharedInstance.cellHeight / 2))
+        lineLayerPath.move(to: CGPoint.init(x: KLineVM.sharedInstance.getKLinePriceTopDis(CGFloat(currData!.highestprice)), y: KLineVM.sharedInstance.cellHeight / 2))
+        lineLayerPath.addLine(to: CGPoint.init(x: KLineVM.sharedInstance.getKLinePriceTopDis(CGFloat(currData!.lowestprice)), y: KLineVM.sharedInstance.cellHeight / 2))
         lineLayer.path = lineLayerPath.cgPath
         
         // 升了
