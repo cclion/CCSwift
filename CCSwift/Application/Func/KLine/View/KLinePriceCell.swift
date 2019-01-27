@@ -54,11 +54,7 @@ class KLinePriceCell: UITableViewCell {
             pillarLayer.fillColor = UIColor.green.cgColor
             lineLayer.strokeColor = UIColor.green.cgColor
         }
-        
-        // Debug
-//        maxLabel.text = String.init(format:"%.2f",KLineVM.sharedInstance.priceMax) + "---" + String.init(format:"%.2f",CGFloat([currData!.openprice, currData!.closeprice].max()!))
-//        minLabel.text = String.init(format:"%.2f",CGFloat([currData!.openprice, currData!.closeprice].min()!)) + "---" + String.init(format:"%.2f",KLineVM.sharedInstance.priceMin )
-//       
+            
     }
     
     func configerSubViews() {
