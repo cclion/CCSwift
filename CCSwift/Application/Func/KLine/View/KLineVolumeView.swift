@@ -10,6 +10,9 @@ import UIKit
 
 class KLineVolumeView: UITableView, UITableViewDelegate, UITableViewDataSource {
     
+    /// 竖直线
+    lazy var verticalLineLayer = CAShapeLayer.init()
+    
     var cellLastHeight = KLineVM.sharedInstance.cellHeight
     
     weak var delegateK: KLineViewDelegate?
@@ -115,6 +118,45 @@ class KLineVolumeView: UITableView, UITableViewDelegate, UITableViewDataSource {
         
     }
     
+    @objc func longPressAction(longPressGes: UILongPressGestureRecognizer) {
+        
+        let point = longPressGes.location(in: self)
+        
+        let index = self.indexPathForRow(at: point)
+        if let _ = index {
+            self.drawWithLongPress(longPressGes: longPressGes, index: index!)
+            if let delegate = delegateK{
+                delegate.kLineViewDidHandleLong(self, longPressGes: longPressGes, index: index!)
+            }
+        }
+        
+    }
+    
+    public func drawWithLongPress(longPressGes: UILongPressGestureRecognizer, index: IndexPath) -> () {
+        if longPressGes.state == .began{
+            self.layoutGuideLine(index: index)
+        }else  if (longPressGes.state == .ended) {
+            verticalLineLayer.path = nil
+        }else  if (longPressGes.state == .changed) {
+            self.layoutGuideLine(index: index)
+        }
+        
+    }
+    func layoutGuideLine(index: IndexPath) -> () {
+        
+        // 当前的cell的位置
+        let rect = self.rectForRow(at: index)
+        
+        // 找到当前中心点的位置
+        let y = rect.origin.y + rect.size.height * 0.5
+        
+        let verticalLineLayerPath = UIBezierPath.init()
+        verticalLineLayerPath.move(to: CGPoint.init(x: 0, y: y))
+        verticalLineLayerPath.addLine(to: CGPoint.init(x: kLineVolumeViewHeight, y: y))
+        verticalLineLayer.path = verticalLineLayerPath.cgPath
+    }
+    
+    
     override init(frame: CGRect, style: UITableView.Style) {
         super.init(frame: frame, style: style)
         self.separatorStyle = .none
@@ -127,9 +169,14 @@ class KLineVolumeView: UITableView, UITableViewDelegate, UITableViewDataSource {
         self.estimatedSectionHeaderHeight = 0;// default is UITableViewAutomaticDimension, set to 0 to disable
         self.estimatedSectionFooterHeight = 0; // default is UITableViewAutomaticDimension, set to 0 to disable
         
+        self.layer.addSublayer(verticalLineLayer)
+        verticalLineLayer.lineWidth = 1
+        verticalLineLayer.strokeColor = UIColor.black.cgColor
         
         let pinchGes = UIPinchGestureRecognizer.init(target: self, action:  #selector(pinchAction(pinchGes:)))
         self.addGestureRecognizer(pinchGes)
+        let longPressGes = UILongPressGestureRecognizer.init(target: self, action:  #selector(longPressAction(longPressGes:)))
+        self.addGestureRecognizer(longPressGes)
         
     }
     required init?(coder aDecoder: NSCoder) {

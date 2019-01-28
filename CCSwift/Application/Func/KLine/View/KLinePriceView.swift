@@ -13,6 +13,11 @@ class KLinePriceView: UITableView, UITableViewDelegate, UITableViewDataSource {
     
     weak var delegateK: KLineViewDelegate?
     
+    /// 水平线
+    lazy var horizontalLineLayer = CAShapeLayer.init()
+    /// 竖直线
+    lazy var verticalLineLayer = CAShapeLayer.init()
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return KLineVM.sharedInstance.data.count
     }
@@ -136,6 +141,54 @@ class KLinePriceView: UITableView, UITableViewDelegate, UITableViewDataSource {
         
     }
     
+    @objc func longPressAction(longPressGes: UILongPressGestureRecognizer) {
+        
+        let point = longPressGes.location(in: self)
+        
+        let index = self.indexPathForRow(at: point)
+        if let _ = index {
+             self.drawWithLongPress(longPressGes: longPressGes, index: index!)
+            if let delegate = delegateK{
+                delegate.kLineViewDidHandleLong(self, longPressGes: longPressGes, index: index!)
+            }
+        }
+    }
+    
+    public func drawWithLongPress(longPressGes: UILongPressGestureRecognizer, index: IndexPath) -> () {
+        if longPressGes.state == .began{
+            self.layoutGuideLine(index: index)
+        }else  if (longPressGes.state == .ended) {
+            horizontalLineLayer.path = nil
+            verticalLineLayer.path = nil
+        }else  if (longPressGes.state == .changed) {
+            self.layoutGuideLine(index: index)
+        }
+        
+    }
+    func layoutGuideLine(index: IndexPath) -> () {
+        
+        // 当前的cell的位置
+        let rect = self.rectForRow(at: index)
+        
+        // 找到当前的数据
+        let data = KLineVM.sharedInstance.data[index.row]
+        
+        // 找到当前中心点的位置
+        let x = KLineVM.sharedInstance.getKLinePriceTopDis(CGFloat(data.closeprice))
+        let y = rect.origin.y + rect.size.height * 0.5
+
+        let horizontalLineLayerPath = UIBezierPath.init()
+        horizontalLineLayerPath.move(to: CGPoint.init(x: x, y:self.contentOffset.y))
+        horizontalLineLayerPath.addLine(to: CGPoint.init(x: x, y: kLineViewWitdh + self.contentOffset.y))
+        horizontalLineLayer.path = horizontalLineLayerPath.cgPath
+      
+        let verticalLineLayerPath = UIBezierPath.init()
+        verticalLineLayerPath.move(to: CGPoint.init(x: 0, y: y))
+        verticalLineLayerPath.addLine(to: CGPoint.init(x: kLinePriceViewHeight, y: y))
+        verticalLineLayer.path = verticalLineLayerPath.cgPath
+    }
+    
+    
     override init(frame: CGRect, style: UITableView.Style) {
         super.init(frame: frame, style: style)
         self.separatorStyle = .none
@@ -147,9 +200,19 @@ class KLinePriceView: UITableView, UITableViewDelegate, UITableViewDataSource {
         self.estimatedSectionHeaderHeight = 0;// default is UITableViewAutomaticDimension, set to 0 to disable
         self.estimatedSectionFooterHeight = 0; // default is UITableViewAutomaticDimension, set to 0 to disable
         
+        self.layer.addSublayer(horizontalLineLayer)
+        self.layer.addSublayer(verticalLineLayer)
+        
+        horizontalLineLayer.lineWidth = 1
+        verticalLineLayer.lineWidth = 1
+
+        horizontalLineLayer.strokeColor = UIColor.black.cgColor
+        verticalLineLayer.strokeColor = UIColor.black.cgColor
+        
         let pinchGes = UIPinchGestureRecognizer.init(target: self, action:  #selector(pinchAction(pinchGes:)))
         self.addGestureRecognizer(pinchGes)
-        
+        let longPressGes = UILongPressGestureRecognizer.init(target: self, action:  #selector(longPressAction(longPressGes:)))
+        self.addGestureRecognizer(longPressGes)
     }
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)

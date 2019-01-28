@@ -15,11 +15,22 @@ import HandyJSON
     /// 保持价格视图和交易量视图捏合时 cell的宽度一致
     func kLineViewDidPinch(_ tableView: UITableView)
     /// 保持价格视图和交易量视图长按时可以统一绘制数据线
-    func kLineViewDidHandleLong(_ tableView: UITableView)
+//    func kLineViewDidHandleLong(_ tableView: UITableView)
+    func kLineViewDidHandleLong(_ tableView: UITableView, longPressGes: UILongPressGestureRecognizer, index: IndexPath)
 }
 
 
 class KLineView: UIView, KLineViewDelegate {
+    func kLineViewDidHandleLong(_ tableView: UITableView, longPressGes: UILongPressGestureRecognizer, index: IndexPath) {
+        if tableView == priceView{
+            volumeView.drawWithLongPress(longPressGes: longPressGes, index: index)
+        }else{
+            priceView.drawWithLongPress(longPressGes: longPressGes, index: index)
+        }
+    }
+    
+ 
+    
     func kLineViewDidScroll(_ tableView: UITableView) {
         if tableView == priceView{
             volumeView.contentOffset = priceView.contentOffset
@@ -34,10 +45,6 @@ class KLineView: UIView, KLineViewDelegate {
         }else{
             priceView.reloadData()
         }
-    }
-    
-    func kLineViewDidHandleLong(_ tableView: UITableView) {
-        
     }
     
     var priceView = KLinePriceView.init(frame: CGRect.init(x: 0, y: 0, width: 0, height: 0), style: .plain)
