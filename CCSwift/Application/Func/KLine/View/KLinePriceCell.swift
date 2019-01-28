@@ -69,24 +69,45 @@ class KLinePriceCell: UITableViewCell {
         
         //均线业务
         // 先找到有无上一个数据 如index == 0，则无上一个数据
-         let MA5LayerPath = UIBezierPath.init()
+        let MA5LayerPath = UIBezierPath.init()
+        let MA10LayerPath = UIBezierPath.init()
+        let MA20LayerPath = UIBezierPath.init()
+
         if index! > 0 {
            // 上一个数据
             let lastData = KLineVM.sharedInstance.data[index! - 1]
             MA5LayerPath.move(to: CGPoint.init(x: KLineVM.sharedInstance.getKLinePriceTopDis(CGFloat((currData!.avg_5 + lastData.avg_5) * 0.5)), y: 0))
             MA5LayerPath.addLine(to: CGPoint.init(x: KLineVM.sharedInstance.getKLinePriceTopDis(CGFloat(currData!.avg_5)), y: KLineVM.sharedInstance.cellHeight / 2))
             
+            MA10LayerPath.move(to: CGPoint.init(x: KLineVM.sharedInstance.getKLinePriceTopDis(CGFloat((currData!.avg_10 + lastData.avg_10) * 0.5)), y: 0))
+            MA10LayerPath.addLine(to: CGPoint.init(x: KLineVM.sharedInstance.getKLinePriceTopDis(CGFloat(currData!.avg_10)), y: KLineVM.sharedInstance.cellHeight / 2))
+            
+            MA20LayerPath.move(to: CGPoint.init(x: KLineVM.sharedInstance.getKLinePriceTopDis(CGFloat((currData!.avg_20 + lastData.avg_20) * 0.5)), y: 0))
+            MA20LayerPath.addLine(to: CGPoint.init(x: KLineVM.sharedInstance.getKLinePriceTopDis(CGFloat(currData!.avg_20)), y: KLineVM.sharedInstance.cellHeight / 2))
         }else{
              MA5LayerPath.move(to: CGPoint.init(x: KLineVM.sharedInstance.getKLinePriceTopDis(CGFloat(currData!.avg_5)), y: KLineVM.sharedInstance.cellHeight / 2))
+            
+            MA10LayerPath.move(to: CGPoint.init(x: KLineVM.sharedInstance.getKLinePriceTopDis(CGFloat(currData!.avg_10)), y: KLineVM.sharedInstance.cellHeight / 2))
+            
+             MA20LayerPath.move(to: CGPoint.init(x: KLineVM.sharedInstance.getKLinePriceTopDis(CGFloat(currData!.avg_20)), y: KLineVM.sharedInstance.cellHeight / 2))
         }
         
         if index! + 1 < KLineVM.sharedInstance.data.count{
             
-             let nextData = KLineVM.sharedInstance.data[index! + 1]
-             MA5LayerPath.addLine(to: CGPoint.init(x: KLineVM.sharedInstance.getKLinePriceTopDis(CGFloat((currData!.avg_5 + nextData.avg_5) * 0.5)), y: KLineVM.sharedInstance.cellHeight))
+            let nextData = KLineVM.sharedInstance.data[index! + 1]
+            MA5LayerPath.addLine(to: CGPoint.init(x: KLineVM.sharedInstance.getKLinePriceTopDis(CGFloat((currData!.avg_5 + nextData.avg_5) * 0.5)), y: KLineVM.sharedInstance.cellHeight))
+            
+            MA10LayerPath.addLine(to: CGPoint.init(x: KLineVM.sharedInstance.getKLinePriceTopDis(CGFloat((currData!.avg_10 + nextData.avg_10) * 0.5)), y: KLineVM.sharedInstance.cellHeight))
+            
+            MA20LayerPath.addLine(to: CGPoint.init(x: KLineVM.sharedInstance.getKLinePriceTopDis(CGFloat((currData!.avg_20 + nextData.avg_20) * 0.5)), y: KLineVM.sharedInstance.cellHeight))
         }
         
-         MA5Layer.path = MA5LayerPath.cgPath
+        MA5Layer.path = MA5LayerPath.cgPath
+        
+        MA10Layer.path = MA10LayerPath.cgPath
+
+        MA20Layer.path = MA20LayerPath.cgPath
+
         
     }
     
@@ -105,7 +126,11 @@ class KLinePriceCell: UITableViewCell {
         MA5Layer.fillColor = UIColor.clear.cgColor
 
         MA10Layer.strokeColor = kLineMA10Color.cgColor
+        MA10Layer.fillColor = UIColor.clear.cgColor
+
         MA20Layer.strokeColor = kLineMA20Color.cgColor
+        MA20Layer.fillColor = UIColor.clear.cgColor
+
 
         // debug
         self.addSubview(maxLabel)
