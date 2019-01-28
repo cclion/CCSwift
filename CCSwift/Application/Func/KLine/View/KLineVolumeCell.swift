@@ -47,10 +47,10 @@ class KLineVolumeCell: UITableViewCell {
     func configerSubViews() {
 
         self.contentView.layer.addSublayer(pillarLayer)
-        self.addSubview(maxLabel)
-        maxLabel.frame = CGRect.init(x: 0, y: 0, width: 200, height: 20)
-        maxLabel.textColor = UIColor.red
-        maxLabel.font = UIFont.systemFont(ofSize: 10)
+//        self.addSubview(maxLabel)
+//        maxLabel.frame = CGRect.init(x: 0, y: 0, width: 200, height: 20)
+//        maxLabel.textColor = UIColor.red
+//        maxLabel.font = UIFont.systemFont(ofSize: 10)
     }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {

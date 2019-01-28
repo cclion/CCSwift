@@ -11,6 +11,8 @@ class KLinePriceView: UITableView, UITableViewDelegate, UITableViewDataSource {
     
     var cellLastHeight = KLineVM.sharedInstance.cellHeight
     
+    weak var delegateK: KLineViewDelegate?
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return KLineVM.sharedInstance.data.count
     }
@@ -26,12 +28,14 @@ class KLinePriceView: UITableView, UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
-//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-//        return "max---" + String.init(format:"%.2f",KLineVM.sharedInstance.priceMax) + "min---" + String.init(format:"%.2f",KLineVM.sharedInstance.priceMin )
-//    }
-    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return KLineVM.sharedInstance.cellHeight
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if let delegate = delegateK{
+            delegate.kLineViewDidScroll(self)
+        }
     }
     
     /// 🔥找到当前列表展示的数据极值
@@ -118,7 +122,12 @@ class KLinePriceView: UITableView, UITableViewDelegate, UITableViewDataSource {
                 self.reloadData()
                 // 修改偏移量 使中心点一直处于中心 注意设置 estimatedRowHeight、estimatedSectionHeaderHeight、estimatedSectionFooterHeight来保证contentOffset可用
                 self.contentOffset = CGPoint.init(x: 0, y: o2)
+            
+                if let delegate = delegateK{
+                    delegate.kLineViewDidPinch(self)
+                }
             }
+            
         }
         
         if pinchGes.state == .ended ||  pinchGes.state == .recognized{

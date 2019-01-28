@@ -9,17 +9,37 @@
 import UIKit
 import HandyJSON
 
-protocol KLineViewDelegate {
-    
+@objc protocol KLineViewDelegate: NSObjectProtocol {
+    /// 保持价格视图和交易量视图 偏移量一致
     func kLineViewDidScroll(_ tableView: UITableView)
+    /// 保持价格视图和交易量视图捏合时 cell的宽度一致
     func kLineViewDidPinch(_ tableView: UITableView)
+    /// 保持价格视图和交易量视图长按时可以统一绘制线条
     func kLineViewDidHandleLong(_ tableView: UITableView)
-
 }
 
 
-class KLineView: UIView {
- 
+class KLineView: UIView, KLineViewDelegate {
+    func kLineViewDidScroll(_ tableView: UITableView) {
+        if tableView == priceView{
+            volumeView.contentOffset = priceView.contentOffset
+        }else{
+            priceView.contentOffset = volumeView.contentOffset
+        }
+    }
+    
+    func kLineViewDidPinch(_ tableView: UITableView) {
+        if tableView == priceView{
+            volumeView.reloadData()
+        }else{
+            priceView.reloadData()
+        }
+    }
+    
+    func kLineViewDidHandleLong(_ tableView: UITableView) {
+        
+    }
+    
     var priceView = KLinePriceView.init(frame: CGRect.init(x: 0, y: 0, width: 0, height: 0), style: .plain)
     var volumeView = KLineVolumeView.init(frame: CGRect.init(x: 0, y: 0, width: 0, height: 0), style: .plain)
 
@@ -29,6 +49,9 @@ class KLineView: UIView {
         self.addSubview(priceView)
         self.addSubview(volumeView)
 
+        priceView.delegateK = self
+        volumeView.delegateK = self
+        
         priceView.layer.borderWidth = 1
         volumeView.layer.borderWidth = 1
 

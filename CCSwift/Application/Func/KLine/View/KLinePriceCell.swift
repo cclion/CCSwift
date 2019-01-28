@@ -54,14 +54,13 @@ class KLinePriceCell: UITableViewCell {
             pillarLayer.fillColor = UIColor.green.cgColor
             lineLayer.strokeColor = UIColor.green.cgColor
         }
-            
+        
     }
     
     func configerSubViews() {
         
         lineLayer.lineWidth = 1
 
-        
         self.contentView.layer.addSublayer(pillarLayer)
         self.contentView.layer.addSublayer(lineLayer)
 
