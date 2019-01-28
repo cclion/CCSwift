@@ -48,10 +48,10 @@ class KLineVolumeView: UITableView, UITableViewDelegate, UITableViewDataSource {
             if max == 0 || CGFloat(data.turnovervol) > max{
                 max =  CGFloat(data.turnovervol)
             }
-            
         }
         
         // 🔥极值变化 发送通知
+        // 🔥注意：不要用reload， 1、耗费性能 2、处理不当，会导致死循环
         if KLineVM.sharedInstance.volumeMax == 0 || max != KLineVM.sharedInstance.volumeMax{
             KLineVM.sharedInstance.volumeMax = max
             
@@ -117,6 +117,8 @@ class KLineVolumeView: UITableView, UITableViewDelegate, UITableViewDataSource {
     
     override init(frame: CGRect, style: UITableView.Style) {
         super.init(frame: frame, style: style)
+        self.separatorStyle = .none
+
         self.delegate = self
         self.dataSource = self
         

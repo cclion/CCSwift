@@ -138,6 +138,7 @@ class KLinePriceView: UITableView, UITableViewDelegate, UITableViewDataSource {
     
     override init(frame: CGRect, style: UITableView.Style) {
         super.init(frame: frame, style: style)
+        self.separatorStyle = .none
         self.delegate = self
         self.dataSource = self
         

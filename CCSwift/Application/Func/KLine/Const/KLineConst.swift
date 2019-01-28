@@ -27,23 +27,31 @@ let kLineViewInterval: CGFloat = 30
 //3、交易量部分
 /// K线交易量视图高度（自身无边距）
 let kLineVolumeViewHeight: CGFloat = 150
-
+/// K线视图默认cell的宽度
 let kLineViewCellDefaultHeight: CGFloat = 10
 /// K线视图总高度
 let kLineViewHeight: CGFloat = kLinePriceViewHeight + kLineVolumeViewHeight + kLineViewInterval
 
-
+// MARK:- 日K线常量
 /// K线视图价格cell reuseIdentifier
 let kLinePriceRID = "KLinePriceRID"
 /// K线视图交易量cell reuseIdentifier
 let kLineVolumeRID = "kLineVolumeRID"
-
-
 /// K线价格视图极值发生变化
 let KLinePriceExtremumChangeNotification = "KLinePriceExtremumChangeNotification"
-
 /// K线交易量视图极值发生变化
 let KLineVolumeExtremumChangeNotification = "KLineVolumeExtremumChangeNotification"
 
+// MARK:- 颜色
 
+/// K线上升颜色
+let kLinePriceUpColor = RGBColor(r: 221, g: 71, b: 66) //红
+/// K线下降颜色
+let kLinePriceDownColor = RGBColor(r: 76, g: 167, b: 68) //绿
+/// K线MA5颜色
+let kLineMA5Color = RGBColor(r: 240, g: 158, b: 66)
+/// K线MA10颜色
+let kLineMA10Color = RGBColor(r: 78, g: 140, b: 224)
+/// K线MA20颜色
+let kLineMA20Color = RGBColor(r: 195, g: 81, b: 161)
 

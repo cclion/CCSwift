@@ -14,7 +14,7 @@ import HandyJSON
     func kLineViewDidScroll(_ tableView: UITableView)
     /// 保持价格视图和交易量视图捏合时 cell的宽度一致
     func kLineViewDidPinch(_ tableView: UITableView)
-    /// 保持价格视图和交易量视图长按时可以统一绘制线条
+    /// 保持价格视图和交易量视图长按时可以统一绘制数据线
     func kLineViewDidHandleLong(_ tableView: UITableView)
 }
 
