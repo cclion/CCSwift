@@ -43,15 +43,18 @@ let KLinePriceExtremumChangeNotification = "KLinePriceExtremumChangeNotification
 let KLineVolumeExtremumChangeNotification = "KLineVolumeExtremumChangeNotification"
 
 // MARK:- 颜色
-
+func KRGBColor(r:CGFloat,g:CGFloat,b:CGFloat) ->UIColor{
+    return UIColor.init(red: r / 255.0, green: g / 255.0, blue: b / 255.0, alpha: 1)
+}
 /// K线上升颜色
-let kLinePriceUpColor = RGBColor(r: 221, g: 71, b: 66) //红
+let kLinePriceUpColor = KRGBColor(r: 221, g: 71, b: 66) //红
 /// K线下降颜色
-let kLinePriceDownColor = RGBColor(r: 76, g: 167, b: 68) //绿
+let kLinePriceDownColor = KRGBColor(r: 76, g: 167, b: 68) //绿
 /// K线MA5颜色
-let kLineMA5Color = RGBColor(r: 240, g: 158, b: 66)
+let kLineMA5Color = KRGBColor(r: 240, g: 158, b: 66)
 /// K线MA10颜色
-let kLineMA10Color = RGBColor(r: 78, g: 140, b: 224)
+let kLineMA10Color = KRGBColor(r: 78, g: 140, b: 224)
 /// K线MA20颜色
-let kLineMA20Color = RGBColor(r: 195, g: 81, b: 161)
-
+let kLineMA20Color = KRGBColor(r: 195, g: 81, b: 161)
+/// K线border颜色
+let kLineBorderColor = KRGBColor(r: 240, g: 240, b: 240)

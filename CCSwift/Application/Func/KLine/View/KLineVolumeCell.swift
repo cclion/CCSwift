@@ -11,8 +11,6 @@ import UIKit
 
 class KLineVolumeCell: UITableViewCell {
 
-    let maxLabel = UILabel.init()
-
     var index: Int? {
         didSet{
             let data = KLineVM.sharedInstance.data[index!]
@@ -40,17 +38,20 @@ class KLineVolumeCell: UITableViewCell {
         let pillarLayerPath = UIBezierPath.init(rect: KLineVM.sharedInstance.getKLineVolumeRect(currData!))
         pillarLayer.path = pillarLayerPath.cgPath
 
-        maxLabel.text = String.init(format:"%.2f",KLineVM.sharedInstance.volumeMax) + "---" + String.init(format:"%.2f",CGFloat((currData?.turnovervol)!))
+        // color
+        if currData!.closeprice >= currData!.openprice {
+            pillarLayer.fillColor = UIColor.white.cgColor
+            pillarLayer.strokeColor = kLinePriceUpColor.cgColor
+        }else{
+            pillarLayer.fillColor = kLinePriceDownColor.cgColor
+        }
         
     }
     
     func configerSubViews() {
 
         self.contentView.layer.addSublayer(pillarLayer)
-//        self.addSubview(maxLabel)
-//        maxLabel.frame = CGRect.init(x: 0, y: 0, width: 200, height: 20)
-//        maxLabel.textColor = UIColor.red
-//        maxLabel.font = UIFont.systemFont(ofSize: 10)
+
     }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {

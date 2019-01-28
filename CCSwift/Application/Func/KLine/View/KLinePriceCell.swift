@@ -40,6 +40,10 @@ class KLinePriceCell: UITableViewCell {
     /// 均线MA20
     lazy var MA20Layer = CAShapeLayer.init()
     
+    /// 左边界线
+    lazy var borderLeftLayer = CAShapeLayer.init()
+    /// 右边界线
+    lazy var borderRightLayer = CAShapeLayer.init()
     
     /// 根据数据差异性渲染布局
     @objc func layoutSubViews() {
@@ -49,6 +53,7 @@ class KLinePriceCell: UITableViewCell {
         }
         
         //K线柱业务
+        
         let pillarLayerPath = UIBezierPath.init(rect: KLineVM.sharedInstance.getKLinePriceRect(currData!))
         pillarLayer.path = pillarLayerPath.cgPath
         
@@ -59,13 +64,13 @@ class KLinePriceCell: UITableViewCell {
         
         // color
         if currData!.closeprice >= currData!.openprice {
-            pillarLayer.fillColor = UIColor.red.cgColor
-            lineLayer.strokeColor = UIColor.red.cgColor
+            pillarLayer.fillColor = UIColor.white.cgColor
+            pillarLayer.strokeColor = kLinePriceUpColor.cgColor
+            lineLayer.strokeColor = kLinePriceUpColor.cgColor
         }else{
-            pillarLayer.fillColor = UIColor.green.cgColor
-            lineLayer.strokeColor = UIColor.green.cgColor
+            pillarLayer.fillColor = kLinePriceDownColor.cgColor
+            lineLayer.strokeColor = kLinePriceDownColor.cgColor
         }
-        
         
         //均线业务
         // 先找到有无上一个数据 如index == 0，则无上一个数据
@@ -116,11 +121,14 @@ class KLinePriceCell: UITableViewCell {
         
         lineLayer.lineWidth = 1
 
-        self.contentView.layer.addSublayer(pillarLayer)
         self.contentView.layer.addSublayer(lineLayer)
+        self.contentView.layer.addSublayer(pillarLayer)
         self.contentView.layer.addSublayer(MA5Layer)
         self.contentView.layer.addSublayer(MA10Layer)
         self.contentView.layer.addSublayer(MA20Layer)
+        
+        self.contentView.layer.addSublayer(borderLeftLayer)
+        self.contentView.layer.addSublayer(borderRightLayer)
 
         MA5Layer.strokeColor = kLineMA5Color.cgColor
         MA5Layer.fillColor = UIColor.clear.cgColor
@@ -131,7 +139,12 @@ class KLinePriceCell: UITableViewCell {
         MA20Layer.strokeColor = kLineMA20Color.cgColor
         MA20Layer.fillColor = UIColor.clear.cgColor
 
+        borderLeftLayer.fillColor = kLineBorderColor.cgColor
+        borderRightLayer.fillColor = kLineBorderColor.cgColor
 
+        borderLeftLayer.path = UIBezierPath.init(rect: CGRect.init(x: 10, y: 0, width: 1, height: KLineVM.sharedInstance.cellHeight)).cgPath
+        borderRightLayer.path = UIBezierPath.init(rect: CGRect.init(x: kLinePriceViewHeight - 10, y: 0, width: 1, height: KLineVM.sharedInstance.cellHeight)).cgPath
+    
         // debug
         self.addSubview(maxLabel)
         self.addSubview(minLabel)

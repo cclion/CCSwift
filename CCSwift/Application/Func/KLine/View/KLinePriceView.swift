@@ -147,7 +147,6 @@ class KLinePriceView: UITableView, UITableViewDelegate, UITableViewDataSource {
         self.estimatedSectionHeaderHeight = 0;// default is UITableViewAutomaticDimension, set to 0 to disable
         self.estimatedSectionFooterHeight = 0; // default is UITableViewAutomaticDimension, set to 0 to disable
         
-        
         let pinchGes = UIPinchGestureRecognizer.init(target: self, action:  #selector(pinchAction(pinchGes:)))
         self.addGestureRecognizer(pinchGes)
         
