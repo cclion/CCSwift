@@ -42,6 +42,10 @@ let KLinePriceExtremumChangeNotification = "KLinePriceExtremumChangeNotification
 /// K线交易量视图极值发生变化
 let KLineVolumeExtremumChangeNotification = "KLineVolumeExtremumChangeNotification"
 
+// MARK:- 字体大小
+/// K线极值显示字体大小
+let kLineViewFontSize: CGFloat = 12
+
 // MARK:- 颜色
 func KRGBColor(r:CGFloat,g:CGFloat,b:CGFloat) ->UIColor{
     return UIColor.init(red: r / 255.0, green: g / 255.0, blue: b / 255.0, alpha: 1)

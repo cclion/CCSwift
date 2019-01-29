@@ -129,7 +129,6 @@ class KLineVolumeView: UITableView, UITableViewDelegate, UITableViewDataSource {
                 delegate.kLineViewDidHandleLong(self, longPressGes: longPressGes, index: index!)
             }
         }
-        
     }
     
     public func drawWithLongPress(longPressGes: UILongPressGestureRecognizer, index: IndexPath) -> () {

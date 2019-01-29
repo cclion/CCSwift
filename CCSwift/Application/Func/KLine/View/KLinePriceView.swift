@@ -18,6 +18,32 @@ class KLinePriceView: UITableView, UITableViewDelegate, UITableViewDataSource {
     /// 竖直线
     lazy var verticalLineLayer = CAShapeLayer.init()
     
+    lazy var maxTextLayer:CATextLayer = {
+       
+        var maxTextLayer = CATextLayer.init()
+        maxTextLayer.fontSize = kLineViewFontSize
+        maxTextLayer.foregroundColor = UIColor.black.cgColor
+        maxTextLayer.alignmentMode = CATextLayerAlignmentMode.left
+        maxTextLayer.contentsScale = UIScreen.main.scale
+        return maxTextLayer
+    }()
+    lazy var minTextLayer:CATextLayer = {
+        
+        var minTextLayer = CATextLayer.init()
+        minTextLayer.fontSize = kLineViewFontSize
+        minTextLayer.foregroundColor = UIColor.black.cgColor
+        minTextLayer.contentsScale = UIScreen.main.scale
+        return minTextLayer
+    }()
+    lazy var midTextLayer:CATextLayer = {
+        
+        var midTextLayer = CATextLayer.init()
+        midTextLayer.fontSize = kLineViewFontSize
+        midTextLayer.foregroundColor = UIColor.black.cgColor
+        midTextLayer.contentsScale = UIScreen.main.scale
+        return midTextLayer
+    }()
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return KLineVM.sharedInstance.data.count
     }
@@ -38,6 +64,7 @@ class KLinePriceView: UITableView, UITableViewDelegate, UITableViewDataSource {
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        self.reloadMark()
         if let delegate = delegateK{
             delegate.kLineViewDidScroll(self)
         }
@@ -74,7 +101,7 @@ class KLinePriceView: UITableView, UITableViewDelegate, UITableViewDataSource {
             let notificationName = Notification.Name(rawValue: KLinePriceExtremumChangeNotification)
             NotificationCenter.default.post(name: notificationName, object: self,
                                             userInfo: nil)
-            
+            self.reloadMark()
         }
         if KLineVM.sharedInstance.priceMin == 0 || min != KLineVM.sharedInstance.priceMin{
             KLineVM.sharedInstance.priceMin = min
@@ -82,6 +109,7 @@ class KLinePriceView: UITableView, UITableViewDelegate, UITableViewDataSource {
             let notificationName = Notification.Name(rawValue: KLinePriceExtremumChangeNotification)
             NotificationCenter.default.post(name: notificationName, object: self,
                                             userInfo: nil)
+            self.reloadMark()
         }
         
     }
@@ -132,7 +160,6 @@ class KLinePriceView: UITableView, UITableViewDelegate, UITableViewDataSource {
                     delegate.kLineViewDidPinch(self)
                 }
             }
-            
         }
         
         if pinchGes.state == .ended ||  pinchGes.state == .recognized{
@@ -144,7 +171,6 @@ class KLinePriceView: UITableView, UITableViewDelegate, UITableViewDataSource {
     @objc func longPressAction(longPressGes: UILongPressGestureRecognizer) {
         
         let point = longPressGes.location(in: self)
-        
         let index = self.indexPathForRow(at: point)
         if let _ = index {
              self.drawWithLongPress(longPressGes: longPressGes, index: index!)
@@ -169,10 +195,8 @@ class KLinePriceView: UITableView, UITableViewDelegate, UITableViewDataSource {
         
         // 当前的cell的位置
         let rect = self.rectForRow(at: index)
-        
         // 找到当前的数据
         let data = KLineVM.sharedInstance.data[index.row]
-        
         // 找到当前中心点的位置
         let x = KLineVM.sharedInstance.getKLinePriceTopDis(CGFloat(data.closeprice))
         let y = rect.origin.y + rect.size.height * 0.5
@@ -187,7 +211,20 @@ class KLinePriceView: UITableView, UITableViewDelegate, UITableViewDataSource {
         verticalLineLayerPath.addLine(to: CGPoint.init(x: kLinePriceViewHeight, y: y))
         verticalLineLayer.path = verticalLineLayerPath.cgPath
     }
-    
+    func reloadMark() {
+
+        CATransaction.begin()
+        CATransaction.setDisableActions(true)
+        
+        maxTextLayer.string = String.init(format:"%.2f",KLineVM.sharedInstance.priceMax)
+        minTextLayer.string = String.init(format:"%.2f",KLineVM.sharedInstance.priceMin)
+        midTextLayer.string = String.init(format:"%.2f",(KLineVM.sharedInstance.priceMin + KLineVM.sharedInstance.priceMax) * 0.5)
+        
+        maxTextLayer.frame = CGRect.init(x: 5, y: self.contentOffset.y + kLineViewWitdh - 60, width: 15, height: 60)
+        minTextLayer.frame = CGRect.init(x: kLinePriceViewHeight - 20, y: self.contentOffset.y + kLineViewWitdh - 60, width: 15, height: 60)
+        midTextLayer.frame = CGRect.init(x: kLinePriceViewHeight * 0.5, y: self.contentOffset.y + kLineViewWitdh - 60, width: 15, height: 60)
+        CATransaction.commit()
+    }
     
     override init(frame: CGRect, style: UITableView.Style) {
         super.init(frame: frame, style: style)
@@ -202,13 +239,21 @@ class KLinePriceView: UITableView, UITableViewDelegate, UITableViewDataSource {
         
         self.layer.addSublayer(horizontalLineLayer)
         self.layer.addSublayer(verticalLineLayer)
-        
+        self.layer.addSublayer(maxTextLayer)
+        self.layer.addSublayer(minTextLayer)
+        self.layer.addSublayer(midTextLayer)
+
         horizontalLineLayer.lineWidth = 1
         verticalLineLayer.lineWidth = 1
 
         horizontalLineLayer.strokeColor = UIColor.black.cgColor
         verticalLineLayer.strokeColor = UIColor.black.cgColor
         
+        maxTextLayer.setAffineTransform(CGAffineTransform(rotationAngle: CGFloat(-.pi * 0.5)))
+        minTextLayer.setAffineTransform(CGAffineTransform(rotationAngle: CGFloat(-.pi * 0.5)))
+        midTextLayer.setAffineTransform(CGAffineTransform(rotationAngle: CGFloat(-.pi * 0.5)))
+
+        // 添加捏合和长按手势
         let pinchGes = UIPinchGestureRecognizer.init(target: self, action:  #selector(pinchAction(pinchGes:)))
         self.addGestureRecognizer(pinchGes)
         let longPressGes = UILongPressGestureRecognizer.init(target: self, action:  #selector(longPressAction(longPressGes:)))
