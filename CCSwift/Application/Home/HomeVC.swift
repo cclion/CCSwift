@@ -28,16 +28,16 @@ class HomeVC: UIViewController {
             controller.view.backgroundColor = randomColor
             return controller
         }
-        let size = UIScreen.main.bounds.size
+//        let size = UIScreen.main.bounds.size
         // 4.创建对应的DNSPageView，并设置它的frame
-        let pageView = DNSPageView(frame: CGRect(x: 0, y: 64, width: size.width, height: size.height - 64 - 50), style: style, titles: titles, childViewControllers: childViewControllers)
+        let pageView = DNSPageView(frame: CGRect(x: 0, y: kStatusBarHeight + kNavBarHeight, width: kScreenWitdh, height: kScreenHeight - kStatusBarHeight + kNavBarHeight - kTabBarHeight), style: style, titles: titles, childViewControllers: childViewControllers)
         view.addSubview(pageView)
 
     }
   
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.pushViewController(KLineVC(), animated: true)
+//        self.navigationController?.pushViewController(KLineVC(), animated: true)
     }
 
 }

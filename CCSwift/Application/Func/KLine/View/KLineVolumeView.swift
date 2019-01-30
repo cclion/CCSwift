@@ -17,6 +17,16 @@ class KLineVolumeView: UITableView, UITableViewDelegate, UITableViewDataSource {
     
     weak var delegateK: KLineViewDelegate?
 
+    lazy var maxTextLayer:CATextLayer = {
+        
+        var maxTextLayer = CATextLayer.init()
+        maxTextLayer.fontSize = kLineViewFontSize
+        maxTextLayer.foregroundColor = UIColor.black.cgColor
+        maxTextLayer.alignmentMode = CATextLayerAlignmentMode.left
+        maxTextLayer.contentsScale = UIScreen.main.scale
+        return maxTextLayer
+    }()
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
          return KLineVM.sharedInstance.data.count
     }
@@ -33,6 +43,7 @@ class KLineVolumeView: UITableView, UITableViewDelegate, UITableViewDataSource {
         return KLineVM.sharedInstance.cellHeight
     }
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        self.reloadMark()
         if let delegate = delegateK{
             delegate.kLineViewDidScroll(self)
         }
@@ -61,6 +72,8 @@ class KLineVolumeView: UITableView, UITableViewDelegate, UITableViewDataSource {
             let notificationName = Notification.Name(rawValue: KLineVolumeExtremumChangeNotification)
             NotificationCenter.default.post(name: notificationName, object: self,
                                             userInfo: nil)
+            self.reloadMark()
+
         }
     }
  
@@ -154,7 +167,16 @@ class KLineVolumeView: UITableView, UITableViewDelegate, UITableViewDataSource {
         verticalLineLayerPath.addLine(to: CGPoint.init(x: kLineVolumeViewHeight, y: y))
         verticalLineLayer.path = verticalLineLayerPath.cgPath
     }
-    
+    func reloadMark() {
+        
+        CATransaction.begin()
+        CATransaction.setDisableActions(true)
+        
+        maxTextLayer.string = String.init(format:"%.2f",KLineVM.sharedInstance.priceMax)
+       
+        maxTextLayer.frame = CGRect.init(x: 5, y: self.contentOffset.y + kLineViewWitdh - 60, width: 15, height: 60)
+        CATransaction.commit()
+    }
     
     override init(frame: CGRect, style: UITableView.Style) {
         super.init(frame: frame, style: style)
@@ -169,8 +191,12 @@ class KLineVolumeView: UITableView, UITableViewDelegate, UITableViewDataSource {
         self.estimatedSectionFooterHeight = 0; // default is UITableViewAutomaticDimension, set to 0 to disable
         
         self.layer.addSublayer(verticalLineLayer)
+        self.layer.addSublayer(maxTextLayer)
+
         verticalLineLayer.lineWidth = 1
         verticalLineLayer.strokeColor = UIColor.black.cgColor
+        
+        maxTextLayer.setAffineTransform(CGAffineTransform(rotationAngle: CGFloat(-.pi * 0.5)))
         
         let pinchGes = UIPinchGestureRecognizer.init(target: self, action:  #selector(pinchAction(pinchGes:)))
         self.addGestureRecognizer(pinchGes)
