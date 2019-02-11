@@ -26,6 +26,44 @@ class MoonSceneVC: UIViewController {
     //记录moon的偏移速度
     var velocityPoint = CGPoint.init(x: 0, y: 0)
     
+    // 当前亮度 范围[0,1]
+    var bri: CGFloat = 0.0
+    
+    // 在月球上方有一组记录bri的的单位标志 根据bri的值 来设置小圆球所在的位置
+    lazy var briArray: [CAShapeLayer] = {
+       var briArray = [CAShapeLayer]()
+        
+        for i in 0...10{
+            var shapeLayer = CAShapeLayer.init()
+            var path = UIBezierPath.init()
+            let bri: CGFloat = 0.1 * CGFloat(i)
+            path.move(to: getPoint(bri: bri))
+            path.addLine(to: getPoint(bri: bri))
+            
+            shapeLayer.fillColor = UIColor.white.cgColor
+            shapeLayer.strokeColor = UIColor.white.cgColor
+            shapeLayer.lineJoin = CAShapeLayerLineJoin.round
+            shapeLayer.lineCap = CAShapeLayerLineCap.round
+            shapeLayer.lineWidth = 5
+            shapeLayer.path = path.cgPath;
+
+            briArray.append(shapeLayer)
+        }
+        return briArray
+    }()
+    
+    lazy var briLayer: UIView = {
+        var briLayer = UIView.init(frame: CGRect.init(x: 0, y: 0, width: 12, height: 12))
+        briLayer.backgroundColor = UIColor.white
+        briLayer.layer.masksToBounds = true
+        briLayer.layer.cornerRadius = 6
+        briLayer.layer.shadowColor = UIColor.white.cgColor
+        briLayer.layer.shadowOffset = CGSize.init(width: 3, height: 3)
+        briLayer.layer.shadowOpacity = 0.5
+        
+        return briLayer
+    }()
+    
     lazy var displayLink: CADisplayLink = {
         var displayLink = CADisplayLink.init(target: self, selector: #selector(decelerationStep))
         return displayLink
@@ -65,8 +103,31 @@ class MoonSceneVC: UIViewController {
         let panGes = UIPanGestureRecognizer.init(target: self, action:  #selector(panAction(panges:)))
         scnView.addGestureRecognizer(panGes)
         
+        // 将bri背景放置
+        for layer in briArray {
+            self.view.layer.addSublayer(layer)
+        }
+        
+        
+        
     }
     
+    // 根据bri[0,1]来计算的briLayer的中心点
+    func getPoint(bri: CGFloat) -> CGPoint {
+        
+        // 当前的位置的弧度
+        let radian = Double.pi * ((60 + Double(60 * bri)) / 180)
+        // Y 轴距圆点距离 两种方式
+        let shiftH = CGFloat(sin(radian)) * 150
+        // X 轴距圆点距离
+        let shiftW = cosf(Float(radian)) * 150
+
+        let x = kScreenWitdh * 0.5 - CGFloat(shiftW)
+        let y = kScreenHeight * 0.5 - CGFloat(shiftH)
+        
+        return CGPoint.init(x: x, y: y)
+    }
+
     @objc func panAction(panges:UIPanGestureRecognizer) -> () {
         //1、获取当前手势的相对位置
         if panges.state == .began {
@@ -117,6 +178,7 @@ class MoonSceneVC: UIViewController {
         displayLink.invalidate()
         
     }
+    
     // 根据当前速度减速
     @objc func decelerationStep() -> () {
         //1、获取当前速度
