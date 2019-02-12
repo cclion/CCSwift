@@ -16,38 +16,39 @@ class MoonSceneVC: UIViewController {
     let DECELERATION_RATE: CGFloat = 0.85           //惯性时速度衰减比例
     let SPEED: CGFloat = 0.02                       //惯性时每帧的速度
     
-    //模型节点
+    // 模型节点
     var moonNode: SCNNode = SCNNode.init()
+    // 光源节点
+    var lightNode: SCNNode = SCNNode.init()
     
-    //用于记录月球当前状态距上一次静止状态的偏移量  也是众多状态set的唯一参数
+    // 用于记录月球当前状态距上一次静止状态的偏移量  也是众多状态set的唯一参数 有效周期是手指接触屏幕到滑动结束的整个过程
     var moonXOffect: CGFloat = 0.0
     var moonYOffect: CGFloat = 0.0
     
-    //记录moon的偏移速度
+    // 记录moon的偏移速度
     var velocityPoint = CGPoint.init(x: 0, y: 0)
+    
+    // 用于记录月球changeMoonState 方法上一个偏移量 有效周期针对的《changeMoonState》方法而言
+    var moonXOffectLast: CGFloat = 0.0
     
     // 当前亮度 范围[0,1]
     var bri: CGFloat = 0.0
     
     // 在月球上方有一组记录bri的的单位标志 根据bri的值 来设置小圆球所在的位置
-    lazy var briArray: [CAShapeLayer] = {
-       var briArray = [CAShapeLayer]()
+    lazy var briArray: [CALayer] = {
+       var briArray = [CALayer]()
         
         for i in 0...10{
-            var shapeLayer = CAShapeLayer.init()
-            var path = UIBezierPath.init()
+            var layer = CALayer.init()
             let bri: CGFloat = 0.1 * CGFloat(i)
-            path.move(to: getPoint(bri: bri))
-            path.addLine(to: getPoint(bri: bri))
-            
-            shapeLayer.fillColor = UIColor.white.cgColor
-            shapeLayer.strokeColor = UIColor.white.cgColor
-            shapeLayer.lineJoin = CAShapeLayerLineJoin.round
-            shapeLayer.lineCap = CAShapeLayerLineCap.round
-            shapeLayer.lineWidth = 5
-            shapeLayer.path = path.cgPath;
-
-            briArray.append(shapeLayer)
+            if i == 0 || i == 10 {
+                layer.contents = UIImage.init(named: "icon_moon_bri")?.cgImage
+            }else{
+                layer.backgroundColor = UIColor.white.cgColor
+            }
+            layer.cornerRadius = 2.5
+            layer.frame = CGRect.init(x: getPoint(bri: bri).x - 2.5, y: getPoint(bri: bri).y - 2.5, width: 5, height: 5)
+            briArray.append(layer)
         }
         return briArray
     }()
@@ -62,6 +63,23 @@ class MoonSceneVC: UIViewController {
         briLayer.layer.shadowOpacity = 0.5
         
         return briLayer
+    }()
+    
+    lazy var briLeftLabel: UILabel = {
+        var briLeftLabel = UILabel.init()
+        briLeftLabel.text = "暗"
+        briLeftLabel.textColor = RGBColor(r: 200, g: 200, b: 200)
+        briLeftLabel.font = UIFont.systemFont(ofSize: 11)
+        briLeftLabel.frame = CGRect.init(x: getPoint(bri: 0).x - 20, y: getPoint(bri: 0).y - 5.5, width: 20, height: 11)
+        return briLeftLabel
+    }()
+    lazy var briRightLabel: UILabel = {
+        var briRightLabel = UILabel.init()
+        briRightLabel.text = "明"
+        briRightLabel.textColor = RGBColor(r: 200, g: 200, b: 200)
+        briRightLabel.font = UIFont.systemFont(ofSize: 11)
+        briRightLabel.frame = CGRect.init(x: getPoint(bri: 1).x + 9, y: getPoint(bri: 0).y - 5.5, width: 20, height: 11)
+        return briRightLabel
     }()
     
     lazy var displayLink: CADisplayLink = {
@@ -81,8 +99,9 @@ class MoonSceneVC: UIViewController {
         let scnView = SCNView.init(frame:view.bounds)
         scnView.backgroundColor = UIColor.black
         view.addSubview(scnView)
-        scnView.allowsCameraControl = false    //控制手势 默认false
-        scnView.showsStatistics = true       //调试数据 默认false
+//        scnView.allowsCameraControl = false    //控制手势 默认false
+//        scnView.showsStatistics = true       //调试数据 默认false
+        scnView.autoenablesDefaultLighting = true
         
         let scene = SCNScene()
         scnView.scene = scene
@@ -102,14 +121,35 @@ class MoonSceneVC: UIViewController {
 
         let panGes = UIPanGestureRecognizer.init(target: self, action:  #selector(panAction(panges:)))
         scnView.addGestureRecognizer(panGes)
+
+        // 背景光源
+        let bgLightNode = SCNNode.init()
+        let bglight = SCNLight.init()
+        bglight.type = SCNLight.LightType.ambient
+        bglight.color = RGBColor(r: 0, g: 0, b: 0)
+        bgLightNode.light = bglight
+        scnView.scene?.rootNode.addChildNode(bgLightNode)
+        
+        // bri光源
+//        lightNode = SCNNode.init()
+//        let light = SCNLight.init()
+//        light.type = SCNLight.LightType.omni
+//        light.color = UIColor.white
+//        lightNode.light = light
+//        lightNode.position = SCNVector3.init(0, 0, 70)
+//        scnView.scene?.rootNode.addChildNode(lightNode)
+        
         
         // 将bri背景放置
         for layer in briArray {
             self.view.layer.addSublayer(layer)
         }
+        self.view.addSubview(briLeftLabel)
+        self.view.addSubview(briRightLabel)
+        self.view.addSubview(briLayer)
         
-        
-        
+        briLayer.frame = CGRect.init(x: getPoint(bri: bri).x - 6, y: getPoint(bri: bri).y - 6, width: 12, height: 12)
+
     }
     
     // 根据bri[0,1]来计算的briLayer的中心点
@@ -133,6 +173,8 @@ class MoonSceneVC: UIViewController {
         if panges.state == .began {
             // 关键功能 在一次滑动之后调用 可以刷新当前的node的位置 将最终位置设置为初始位置
             self.updateNodePivot(node: moonNode)
+            
+            moonXOffectLast = 0
         }
         
         let panX = panges.translation(in: self.view).x
@@ -152,8 +194,37 @@ class MoonSceneVC: UIViewController {
 
     //根据moonXOffect、moonYOffect 修改月球状态
     func changeMoonState() -> () {
+        
+        // 更新月球的状态
         let angle: CGFloat = sqrt(pow(moonXOffect, 2) + pow(moonYOffect, 2)) * CGFloat((.pi/180.0))
         moonNode.rotation = SCNVector4Make(Float(moonYOffect), Float(moonXOffect), 0, Float(angle * 0.8));
+        
+        // 更新月球滑动杆的状态
+        let temp = bri + (moonXOffect - moonXOffectLast) * 0.005
+        if temp < 0 {
+            bri = 0
+        }else if temp > 1 {
+            bri = 1
+        }else{
+            bri = temp
+        }
+        print(bri)
+        
+        briLayer.frame = CGRect.init(x: getPoint(bri: bri).x - 6, y: getPoint(bri: bri).y - 6, width: 12, height: 12)
+
+        let index: Int = Int(floor(bri / 0.1))
+        
+        for (i, item) in briArray.enumerated() {
+            if i <= index {
+                item.backgroundColor = UIColor.white.cgColor
+            }else{
+                item.backgroundColor = RGBColor(r: 150, g: 150, b: 150).cgColor
+            }
+        }
+        
+        print(index)
+        
+        moonXOffectLast = moonXOffect
     }
 
     //🌹关键功能 在一次滑动之后调用 可以刷新当前的node的位置 将最终位置设置为初始位置
