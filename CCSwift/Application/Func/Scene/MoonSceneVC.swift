@@ -97,9 +97,9 @@ class MoonSceneVC: UIViewController {
         //5、添加手势
         
         let scnView = SCNView.init(frame:view.bounds)
-        scnView.backgroundColor = UIColor.black
+        scnView.backgroundColor = RGBColor(r: 100, g: 100, b: 100)
         view.addSubview(scnView)
-//        scnView.allowsCameraControl = false    //控制手势 默认false
+        scnView.allowsCameraControl = true    //控制手势 默认false
 //        scnView.showsStatistics = true       //调试数据 默认false
         scnView.autoenablesDefaultLighting = true
         
@@ -115,20 +115,20 @@ class MoonSceneVC: UIViewController {
         
         let cameraNode = SCNNode.init()
         cameraNode.camera = SCNCamera.init()
-        cameraNode.camera?.automaticallyAdjustsZRange = true
+//        cameraNode.camera?.automaticallyAdjustsZRange = true
         cameraNode.position = SCNVector3Make(0, 0, Float(MOONREDIS * 5));
         scene.rootNode.addChildNode(cameraNode)
 
-        let panGes = UIPanGestureRecognizer.init(target: self, action:  #selector(panAction(panges:)))
-        scnView.addGestureRecognizer(panGes)
+//        let panGes = UIPanGestureRecognizer.init(target: self, action:  #selector(panAction(panges:)))
+//        scnView.addGestureRecognizer(panGes)
 
         // 背景光源
-        let bgLightNode = SCNNode.init()
-        let bglight = SCNLight.init()
-        bglight.type = SCNLight.LightType.ambient
-        bglight.color = RGBColor(r: 0, g: 0, b: 0)
-        bgLightNode.light = bglight
-        scnView.scene?.rootNode.addChildNode(bgLightNode)
+//        let bgLightNode = SCNNode.init()
+//        let bglight = SCNLight.init()
+//        bglight.type = SCNLight.LightType.ambient
+//        bglight.color = RGBColor(r: 20, g: 50, b: 50)
+//        bgLightNode.light = bglight
+//        scnView.scene?.rootNode.addChildNode(bgLightNode)
         
         // bri光源
 //        lightNode = SCNNode.init()
@@ -138,7 +138,6 @@ class MoonSceneVC: UIViewController {
 //        lightNode.light = light
 //        lightNode.position = SCNVector3.init(0, 0, 70)
 //        scnView.scene?.rootNode.addChildNode(lightNode)
-        
         
         // 将bri背景放置
         for layer in briArray {
