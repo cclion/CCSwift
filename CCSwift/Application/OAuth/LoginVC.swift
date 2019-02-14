@@ -12,9 +12,6 @@ import Alamofire
 import SwiftyTimer
 import Toast_Swift
 
-
-
-
 class LoginVC: UIViewController,UITextFieldDelegate {
 
     lazy var phoneText = OauthTextField.init(Placeholder: "请输入手机号")

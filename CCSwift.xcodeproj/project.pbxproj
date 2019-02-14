@@ -10,6 +10,8 @@
 		28A469AF13F401AB32EE3BFB /* Pods_CCSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDF200C4653980BAED9252BA /* Pods_CCSwift.framework */; };
 		8F5F05903923C7040F512379 /* Pods_CCSwiftTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2ABC861788E022FF72589A1 /* Pods_CCSwiftTests.framework */; };
 		98EC734393433DB54B87F4A1 /* Pods_CCSwiftUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C4FE9A0A315CE1CDC9BA162 /* Pods_CCSwiftUITests.framework */; };
+		CC59FDF6221549CA00C97868 /* ShortCutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC59FDF5221549CA00C97868 /* ShortCutVC.swift */; };
+		CC59FDF822154A0300C97868 /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = CC59FDF722154A0300C97868 /* Intents.intentdefinition */; };
 		CC83E00D21EF252B00524B4B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC83E00C21EF252B00524B4B /* AppDelegate.swift */; };
 		CC83E00F21EF252B00524B4B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC83E00E21EF252B00524B4B /* ViewController.swift */; };
 		CC83E01221EF252B00524B4B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC83E01021EF252B00524B4B /* Main.storyboard */; };
@@ -73,6 +75,9 @@
 		6D371CFA479255D8A69B446C /* Pods-CCSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CCSwift.release.xcconfig"; path = "Pods/Target Support Files/Pods-CCSwift/Pods-CCSwift.release.xcconfig"; sourceTree = "<group>"; };
 		81F3BA5560A659B0ED530B27 /* Pods-CCSwiftTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CCSwiftTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CCSwiftTests/Pods-CCSwiftTests.debug.xcconfig"; sourceTree = "<group>"; };
 		BDF200C4653980BAED9252BA /* Pods_CCSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CCSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CC59FDF5221549CA00C97868 /* ShortCutVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortCutVC.swift; sourceTree = "<group>"; };
+		CC59FDF722154A0300C97868 /* Intents.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = Intents.intentdefinition; sourceTree = "<group>"; };
+		CC59FDF922154D8D00C97868 /* CCSwift.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CCSwift.entitlements; sourceTree = "<group>"; };
 		CC83E00921EF252B00524B4B /* CCSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CCSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC83E00C21EF252B00524B4B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CC83E00E21EF252B00524B4B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -173,6 +178,7 @@
 		CC83E00B21EF252B00524B4B /* CCSwift */ = {
 			isa = PBXGroup;
 			children = (
+				CC59FDF922154D8D00C97868 /* CCSwift.entitlements */,
 				CC89217521F5781200330991 /* New Group */,
 				CC89217421F577DA00330991 /* Config */,
 				CC89217221F576FF00330991 /* Application */,
@@ -286,6 +292,8 @@
 		CC89218021F5DAF700330991 /* ShortCut */ = {
 			isa = PBXGroup;
 			children = (
+				CC59FDF5221549CA00C97868 /* ShortCutVC.swift */,
+				CC59FDF722154A0300C97868 /* Intents.intentdefinition */,
 			);
 			path = ShortCut;
 			sourceTree = "<group>";
@@ -494,6 +502,11 @@
 				TargetAttributes = {
 					CC83E00821EF252B00524B4B = {
 						CreatedOnToolsVersion = 10.1;
+						SystemCapabilities = {
+							com.apple.Siri = {
+								enabled = 1;
+							};
+						};
 					};
 					CC83E01C21EF252C00524B4B = {
 						CreatedOnToolsVersion = 10.1;
@@ -670,6 +683,7 @@
 			files = (
 				CC89218C21F6EFB500330991 /* KLinePriceView.swift in Sources */,
 				CC89218221F6E1DC00330991 /* KLineConst.swift in Sources */,
+				CC59FDF6221549CA00C97868 /* ShortCutVC.swift in Sources */,
 				CCF2494221F987D000761D29 /* KLineVolumeView.swift in Sources */,
 				CCD7AFB321EF307900DFED80 /* GlobalConst.swift in Sources */,
 				CCD7AFBC21F051C300DFED80 /* MineVC.swift in Sources */,
@@ -697,6 +711,7 @@
 				CC89217A21F597E500330991 /* CCObject.swift in Sources */,
 				CC83E00D21EF252B00524B4B /* AppDelegate.swift in Sources */,
 				CCD7AFCB21F08D3A00DFED80 /* DefaultButton.swift in Sources */,
+				CC59FDF822154A0300C97868 /* Intents.intentdefinition in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -872,6 +887,7 @@
 			baseConfigurationReference = CF2599CAE0A8B32B555C5F1C /* Pods-CCSwift.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = CCSwift/CCSwift.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5R5ZGBHQQ3;
 				INFOPLIST_FILE = CCSwift/Info.plist;
@@ -892,6 +908,7 @@
 			baseConfigurationReference = 6D371CFA479255D8A69B446C /* Pods-CCSwift.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = CCSwift/CCSwift.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5R5ZGBHQQ3;
 				INFOPLIST_FILE = CCSwift/Info.plist;

@@ -99,7 +99,7 @@ class MoonSceneVC: UIViewController {
         let scnView = SCNView.init(frame:view.bounds)
         scnView.backgroundColor = RGBColor(r: 100, g: 100, b: 100)
         view.addSubview(scnView)
-        scnView.allowsCameraControl = true    //控制手势 默认false
+//        scnView.allowsCameraControl = true    //控制手势 默认false
 //        scnView.showsStatistics = true       //调试数据 默认false
         scnView.autoenablesDefaultLighting = true
         
@@ -119,8 +119,8 @@ class MoonSceneVC: UIViewController {
         cameraNode.position = SCNVector3Make(0, 0, Float(MOONREDIS * 5));
         scene.rootNode.addChildNode(cameraNode)
 
-//        let panGes = UIPanGestureRecognizer.init(target: self, action:  #selector(panAction(panges:)))
-//        scnView.addGestureRecognizer(panGes)
+        let panGes = UIPanGestureRecognizer.init(target: self, action:  #selector(panAction(panges:)))
+        scnView.addGestureRecognizer(panGes)
 
         // 背景光源
 //        let bgLightNode = SCNNode.init()
