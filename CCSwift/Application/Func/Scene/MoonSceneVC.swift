@@ -129,8 +129,8 @@ class MoonSceneVC: UIViewController {
 //        bglight.color = RGBColor(r: 20, g: 50, b: 50)
 //        bgLightNode.light = bglight
 //        scnView.scene?.rootNode.addChildNode(bgLightNode)
-        
-        // bri光源
+//        
+//         bri光源
 //        lightNode = SCNNode.init()
 //        let light = SCNLight.init()
 //        light.type = SCNLight.LightType.omni
