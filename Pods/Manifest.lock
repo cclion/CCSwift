@@ -1,8 +1,11 @@
 PODS:
-  - Alamofire (4.7.3)
-  - DNSPageView (1.1.1)
+  - Alamofire (4.8.2)
+  - DNSPageView (1.1.6)
+  - FBRetainCycleDetector (0.1.4)
   - FLEX (2.4.0)
-  - HandyJSON (4.2.0)
+  - HandyJSON (5.0.0-beta.1)
+  - MLeaksFinder (1.0.0):
+    - FBRetainCycleDetector
   - ReactiveCocoa (2.5):
     - ReactiveCocoa/UI (= 2.5)
   - ReactiveCocoa/Core (2.5):
@@ -11,16 +14,17 @@ PODS:
   - ReactiveCocoa/UI (2.5):
     - ReactiveCocoa/Core
   - SnapKit (4.0.1)
-  - SwiftyBeaver (1.6.1)
-  - SwiftyJSON (4.2.0)
+  - SwiftyBeaver (1.7.0)
+  - SwiftyJSON (4.3.0)
   - SwiftyTimer (2.1.0)
-  - Toast-Swift (4.0.0)
+  - Toast-Swift (5.0.0)
 
 DEPENDENCIES:
   - Alamofire (~> 4.7)
   - DNSPageView
   - FLEX (~> 2.0)
-  - HandyJSON
+  - HandyJSON (from `https://github.com/alibaba/HandyJSON.git`, branch `dev_for_swift5.0`)
+  - MLeaksFinder
   - ReactiveCocoa (= 2.5)
   - SnapKit (~> 4.0.0)
   - SwiftyBeaver
@@ -32,8 +36,9 @@ SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
     - DNSPageView
+    - FBRetainCycleDetector
     - FLEX
-    - HandyJSON
+    - MLeaksFinder
     - ReactiveCocoa
     - SnapKit
     - SwiftyBeaver
@@ -41,18 +46,30 @@ SPEC REPOS:
     - SwiftyTimer
     - Toast-Swift
 
+EXTERNAL SOURCES:
+  HandyJSON:
+    :branch: dev_for_swift5.0
+    :git: https://github.com/alibaba/HandyJSON.git
+
+CHECKOUT OPTIONS:
+  HandyJSON:
+    :commit: a2ba4e537711ae1fcd9183679c4db878eb171a78
+    :git: https://github.com/alibaba/HandyJSON.git
+
 SPEC CHECKSUMS:
-  Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
-  DNSPageView: c8598a6d38ee4191191e326cbd5198b641245aaf
+  Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
+  DNSPageView: df84b178394ddf4a73b2d19baf4deb24b4a4ba33
+  FBRetainCycleDetector: 46f8179bbb1c587deee3ea838a1a3ee02acf5015
   FLEX: bd1a39e55b56bb413b6f1b34b3c10a0dc44ef079
-  HandyJSON: 9dfc026c7d7adc1f0f8ba8b181495f0e0763b0f4
+  HandyJSON: 582477127ab3ab65bd2e471815f1a7b846856978
+  MLeaksFinder: 8c435bd2f6d070af18cff082b503b21adc130fc0
   ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
   SnapKit: 0de968a9fec17499afa29683b05d0c775b6d1c29
-  SwiftyBeaver: ccfcdf85a04d429f1633f668650b0ce8020bda3a
-  SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
+  SwiftyBeaver: 4cc0080d2e23f980652e28978db11a5c9da39165
+  SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
   SwiftyTimer: 02dd6cf10cbc71cbf67cec494f6e5eb782102543
-  Toast-Swift: 594b5c5e5129f15438e410207e43287f027b3c00
+  Toast-Swift: 36f4720243c8582c2be243a60a51e193c761f541
 
-PODFILE CHECKSUM: 30044d133bd93c1ff7ce11754ccc24b37156a2ab
+PODFILE CHECKSUM: a10804ca761d1014a2c5e21108d24265c1a26147
 
 COCOAPODS: 1.5.3

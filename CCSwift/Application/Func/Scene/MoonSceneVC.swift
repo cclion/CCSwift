@@ -101,7 +101,7 @@ class MoonSceneVC: UIViewController {
         view.addSubview(scnView)
 //        scnView.allowsCameraControl = true    //控制手势 默认false
 //        scnView.showsStatistics = true       //调试数据 默认false
-        scnView.autoenablesDefaultLighting = true
+//        scnView.autoenablesDefaultLighting = true
         
         let scene = SCNScene()
         scnView.scene = scene
@@ -123,21 +123,21 @@ class MoonSceneVC: UIViewController {
         scnView.addGestureRecognizer(panGes)
 
         // 背景光源
-//        let bgLightNode = SCNNode.init()
-//        let bglight = SCNLight.init()
-//        bglight.type = SCNLight.LightType.ambient
-//        bglight.color = RGBColor(r: 20, g: 50, b: 50)
-//        bgLightNode.light = bglight
-//        scnView.scene?.rootNode.addChildNode(bgLightNode)
-//        
+        let bgLightNode = SCNNode.init()
+        let bglight = SCNLight.init()
+        bglight.type = SCNLight.LightType.ambient
+        bglight.color = RGBColor(r: 20, g: 50, b: 50)
+        bgLightNode.light = bglight
+        scnView.scene?.rootNode.addChildNode(bgLightNode)
+        
 //         bri光源
-//        lightNode = SCNNode.init()
-//        let light = SCNLight.init()
-//        light.type = SCNLight.LightType.omni
-//        light.color = UIColor.white
-//        lightNode.light = light
-//        lightNode.position = SCNVector3.init(0, 0, 70)
-//        scnView.scene?.rootNode.addChildNode(lightNode)
+        lightNode = SCNNode.init()
+        let light = SCNLight.init()
+        light.type = SCNLight.LightType.omni
+        light.color = UIColor.white
+        lightNode.light = light
+        lightNode.position = SCNVector3.init(0, 0, 70)
+        scnView.scene?.rootNode.addChildNode(lightNode)
         
         // 将bri背景放置
         for layer in briArray {

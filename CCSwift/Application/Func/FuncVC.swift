@@ -20,7 +20,8 @@ class FuncVC: UITableViewController {
     //小功能 [[title:control]]
     let data = [["3D模型惯性旋转(月球模型)":"MoonSceneVC"],
                 ["股票K线🔥":"KLineVC"],
-                ["ShortCut":"ShortCutVC"]
+                ["ShortCut":"ShortCutVC"],
+                ["iBeacon":"iBeaconVC"]
                 ]
     
     override func viewDidLoad() {

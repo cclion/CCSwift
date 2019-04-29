@@ -10,6 +10,7 @@
 		28A469AF13F401AB32EE3BFB /* Pods_CCSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDF200C4653980BAED9252BA /* Pods_CCSwift.framework */; };
 		8F5F05903923C7040F512379 /* Pods_CCSwiftTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2ABC861788E022FF72589A1 /* Pods_CCSwiftTests.framework */; };
 		98EC734393433DB54B87F4A1 /* Pods_CCSwiftUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C4FE9A0A315CE1CDC9BA162 /* Pods_CCSwiftUITests.framework */; };
+		CC42721322754C4B00E83E5B /* iBeaconVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC42721222754C4B00E83E5B /* iBeaconVC.swift */; };
 		CC59FDF6221549CA00C97868 /* ShortCutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC59FDF5221549CA00C97868 /* ShortCutVC.swift */; };
 		CC59FDF822154A0300C97868 /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = CC59FDF722154A0300C97868 /* Intents.intentdefinition */; };
 		CC83E00D21EF252B00524B4B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC83E00C21EF252B00524B4B /* AppDelegate.swift */; };
@@ -75,6 +76,7 @@
 		6D371CFA479255D8A69B446C /* Pods-CCSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CCSwift.release.xcconfig"; path = "Pods/Target Support Files/Pods-CCSwift/Pods-CCSwift.release.xcconfig"; sourceTree = "<group>"; };
 		81F3BA5560A659B0ED530B27 /* Pods-CCSwiftTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CCSwiftTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CCSwiftTests/Pods-CCSwiftTests.debug.xcconfig"; sourceTree = "<group>"; };
 		BDF200C4653980BAED9252BA /* Pods_CCSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CCSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CC42721222754C4B00E83E5B /* iBeaconVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iBeaconVC.swift; sourceTree = "<group>"; };
 		CC59FDF5221549CA00C97868 /* ShortCutVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortCutVC.swift; sourceTree = "<group>"; };
 		CC59FDF722154A0300C97868 /* Intents.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = Intents.intentdefinition; sourceTree = "<group>"; };
 		CC59FDF922154D8D00C97868 /* CCSwift.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CCSwift.entitlements; sourceTree = "<group>"; };
@@ -153,6 +155,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CC42721122754C1500E83E5B /* iBeacon */ = {
+			isa = PBXGroup;
+			children = (
+				CC42721222754C4B00E83E5B /* iBeaconVC.swift */,
+			);
+			path = iBeacon;
+			sourceTree = "<group>";
+		};
 		CC83E00021EF252B00524B4B = {
 			isa = PBXGroup;
 			children = (
@@ -179,7 +189,6 @@
 			isa = PBXGroup;
 			children = (
 				CC59FDF922154D8D00C97868 /* CCSwift.entitlements */,
-				CC89217521F5781200330991 /* New Group */,
 				CC89217421F577DA00330991 /* Config */,
 				CC89217221F576FF00330991 /* Application */,
 				CC89217121F5765500330991 /* Const */,
@@ -251,16 +260,10 @@
 			path = Config;
 			sourceTree = "<group>";
 		};
-		CC89217521F5781200330991 /* New Group */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "New Group";
-			sourceTree = "<group>";
-		};
 		CC89217621F57A4700330991 /* Func */ = {
 			isa = PBXGroup;
 			children = (
+				CC42721122754C1500E83E5B /* iBeacon */,
 				CC89217721F57A8E00330991 /* FuncVC.swift */,
 				CC89218021F5DAF700330991 /* ShortCut */,
 				CC89217F21F5DAD800330991 /* KLine */,
@@ -503,6 +506,9 @@
 					CC83E00821EF252B00524B4B = {
 						CreatedOnToolsVersion = 10.1;
 						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
 							com.apple.Siri = {
 								enabled = 1;
 							};
@@ -623,8 +629,10 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-CCSwift/Pods-CCSwift-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/DNSPageView/DNSPageView.framework",
+				"${BUILT_PRODUCTS_DIR}/FBRetainCycleDetector/FBRetainCycleDetector.framework",
 				"${BUILT_PRODUCTS_DIR}/FLEX/FLEX.framework",
 				"${BUILT_PRODUCTS_DIR}/HandyJSON/HandyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/MLeaksFinder/MLeaksFinder.framework",
 				"${BUILT_PRODUCTS_DIR}/ReactiveCocoa/ReactiveCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyBeaver/SwiftyBeaver.framework",
@@ -638,8 +646,10 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DNSPageView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBRetainCycleDetector.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FLEX.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HandyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MLeaksFinder.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyBeaver.framework",
@@ -701,6 +711,7 @@
 				CCD7AFD121F08D5600DFED80 /* NetworkTool.swift in Sources */,
 				CCD7AFB821F0260A00DFED80 /* HomeVC.swift in Sources */,
 				CC89218A21F6ED8300330991 /* KLineView.swift in Sources */,
+				CC42721322754C4B00E83E5B /* iBeaconVC.swift in Sources */,
 				CC89219621F7053B00330991 /* KLineModel.swift in Sources */,
 				CCF2494421F9880700761D29 /* KLineVolumeCell.swift in Sources */,
 				CCD7AFCA21F08D3A00DFED80 /* LoginVC.swift in Sources */,

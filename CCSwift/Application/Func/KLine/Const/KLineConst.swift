@@ -50,6 +50,7 @@ let kLineViewFontSize: CGFloat = 12
 func KRGBColor(r:CGFloat,g:CGFloat,b:CGFloat) ->UIColor{
     return UIColor.init(red: r / 255.0, green: g / 255.0, blue: b / 255.0, alpha: 1)
 }
+
 /// K线上升颜色
 let kLinePriceUpColor = KRGBColor(r: 221, g: 71, b: 66) //红
 /// K线下降颜色

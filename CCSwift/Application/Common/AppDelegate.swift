@@ -8,7 +8,7 @@
 
 import UIKit
 import Toast_Swift
-
+import UserNotifications
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -21,6 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = TabBarController();
 
 //        FLEXManager.shared().showExplorer()
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]){accepted, error in}
+  
         return true
     }
 

@@ -12,9 +12,12 @@ target 'CCSwift' do
   pod 'SnapKit', '~> 4.0.0' #布局
   pod 'ReactiveCocoa','2.5' #RC
   pod 'Toast-Swift' #Toast
-  pod 'HandyJSON' #json转换
+#  pod 'HandyJSON' #json转换
+  pod 'HandyJSON', git: 'https://github.com/alibaba/HandyJSON.git' , branch: 'dev_for_swift5.0'
   pod 'SwiftyTimer' #Timer
+
   pod 'SwiftyBeaver' #彩色log
+  pod 'MLeaksFinder' #检查内存泄漏
 #JSONExport
 
   # Pods for CCSwift
