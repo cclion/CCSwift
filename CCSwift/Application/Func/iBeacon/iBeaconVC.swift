@@ -29,6 +29,7 @@ CLLocationManagerDelegate{
     let locationManager = CLLocationManager()
 
     var showView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: 100, height: 100))
+    var data = [String:[String]]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,13 +38,12 @@ CLLocationManagerDelegate{
         locationManager.delegate = self
         
         let uuid = UUID.init(uuidString: "FDA50693-A4E2-4FB1-AFCF-C6EB07647825")
-        let region = CLBeaconRegion.init(proximityUUID: uuid!, identifier: "test1")
+        let region = CLBeaconRegion.init(proximityUUID: uuid!, identifier: "test")
         region.notifyOnEntry = true
         region.notifyOnExit = true
-        // 后台下 有推送
         region.notifyEntryStateOnDisplay = true
 
-//        locationManager.startRangingBeacons(in: region)
+        locationManager.startRangingBeacons(in: region)
         
         self.view.addSubview(showView)
         showView.center = self.view.center
@@ -64,13 +64,13 @@ CLLocationManagerDelegate{
     }
     
     
-    func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
-        self.push("进入了");
-    }
-    func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
-        self.push("出去了");
-
-    }
+//    func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
+//        self.push("进入了");
+//    }
+//    func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
+//        self.push("出去了");
+//
+//    }
     func locationManager(_ manager: CLLocationManager, didDetermineState state: CLRegionState, for region: CLRegion) {
         
         switch state {
@@ -83,12 +83,9 @@ CLLocationManagerDelegate{
         default:
             self.push("unknow");
         }
-    
     }
     
-    
     func locationManager(_ manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], in region: CLBeaconRegion) {
-//        print(beacons)
         
         var toastStr = ""
         
@@ -126,9 +123,6 @@ CLLocationManagerDelegate{
                 showView.backgroundColor = UIColor.black
             }
         }
-        
-        
-        
         
     }
     
