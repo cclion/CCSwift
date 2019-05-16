@@ -18,6 +18,9 @@ target 'CCSwift' do
 
   pod 'SwiftyBeaver' #彩色log
   pod 'MLeaksFinder' #检查内存泄漏
+  
+  pod 'Firebase/Core' #检测工具 基本框架
+  pod 'Firebase/Performance' #性能检测
 #JSONExport
 
   # Pods for CCSwift

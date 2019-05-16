@@ -36,6 +36,9 @@ CLLocationManagerDelegate{
 
         locationManager.requestAlwaysAuthorization() // 必须要申请权限,否者不会回调扫描到beacons的代理方法
         locationManager.delegate = self
+//        locationManager.activityType = .automotiveNavigation
+//        locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+//        locationManager.distanceFilter = 10.0
         
         let uuid = UUID.init(uuidString: "FDA50693-A4E2-4FB1-AFCF-C6EB07647825")
         let region = CLBeaconRegion.init(proximityUUID: uuid!, identifier: "test")
@@ -43,11 +46,10 @@ CLLocationManagerDelegate{
         region.notifyOnExit = true
         region.notifyEntryStateOnDisplay = true
 
-        locationManager.startRangingBeacons(in: region)
-        
         self.view.addSubview(showView)
         showView.center = self.view.center
         
+        locationManager.startRangingBeacons(in: region)
         locationManager.startMonitoring(for: region)
     }
 
@@ -62,7 +64,6 @@ CLLocationManagerDelegate{
         let request = UNNotificationRequest.init(identifier: "哈哈哈哈哈", content: content, trigger: nil)
         UNUserNotificationCenter.current().add(request) { erro in }
     }
-    
     
 //    func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
 //        self.push("进入了");

@@ -9,30 +9,76 @@
 import UIKit
 import Toast_Swift
 import UserNotifications
+import CoreLocation
+import Firebase
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate {
 
     var window: UIWindow?
+    let locationManager = CLLocationManager()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
-        window?.makeKeyAndVisible();
-        window?.backgroundColor = UIColor.white;
-        window?.rootViewController = TabBarController();
+        window?.makeKeyAndVisible()
+        window?.backgroundColor = UIColor.white
+        window?.rootViewController = TabBarController()
 
 //        FLEXManager.shared().showExplorer()
+        
+        
+        /// 获取推送权限
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]){accepted, error in}
   
+        
+        locationManager.delegate = self
+
+        FirebaseApp.configure()
+//        let content = UNMutableNotificationContent()
+//        content.title = "后台唤起了呢"
+//        //不同的标识生成不同的弹出框（identifier）这是个标识
+//        let request = UNNotificationRequest.init(identifier: "哈哈哈哈哈", content: content, trigger: nil)
+//        UNUserNotificationCenter.current().add(request) { erro in }
+        
         return true
     }
 
+    func push(_ title: String) {
+        let content = UNMutableNotificationContent()
+        content.title = title
+        //不同的标识生成不同的弹出框（identifier）这是个标识
+        let request = UNNotificationRequest.init(identifier: "哈哈哈哈哈", content: content, trigger: nil)
+        UNUserNotificationCenter.current().add(request) { erro in }
+    }
+    
+    //    func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
+    //        self.push("进入了");
+    //    }
+    //    func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
+    //        self.push("出去了");
+    //
+    //    }
+    func locationManager(_ manager: CLLocationManager, didDetermineState state: CLRegionState, for region: CLRegion) {
+        
+        switch state {
+        case .inside:
+            self.push("后台静默下进入了");
+            break
+        case .outside:
+            self.push("后台静默下退出了");
+            break
+        default:
+            self.push("unknow");
+        }
+    }
+    
+    
+    /// 捷径
     func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
         if userActivity.interaction!.intent.isKind(of: CClionIntent.self){
             window?.makeToast("捷径触发成功")
         }
         return true
     }
-    
     
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

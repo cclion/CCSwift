@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>150983174429-4v43lf633b7dlq8t0v5j5qh98m92i3fk.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.150983174429-4v43lf633b7dlq8t0v5j5qh98m92i3fk</string>
+	<key>API_KEY</key>
+	<string>AIzaSyD2i7p3oBqIc5gYfQj4BLLpeba3iwbCLXI</string>
+	<key>GCM_SENDER_ID</key>
+	<string>150983174429</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>cc.cclion.CCSwift</string>
+	<key>PROJECT_ID</key>
+	<string>cclion-10445</string>
+	<key>STORAGE_BUCKET</key>
+	<string>cclion-10445.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:150983174429:ios:00c94222801d4eb8</string>
+	<key>DATABASE_URL</key>
+	<string>https://cclion-10445.firebaseio.com</string>
+</dict>
+</plist>

@@ -10,6 +10,7 @@
 		28A469AF13F401AB32EE3BFB /* Pods_CCSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDF200C4653980BAED9252BA /* Pods_CCSwift.framework */; };
 		8F5F05903923C7040F512379 /* Pods_CCSwiftTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2ABC861788E022FF72589A1 /* Pods_CCSwiftTests.framework */; };
 		98EC734393433DB54B87F4A1 /* Pods_CCSwiftUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C4FE9A0A315CE1CDC9BA162 /* Pods_CCSwiftUITests.framework */; };
+		CC1D189E227FDA4300D9B16D /* iBeaconVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1D189D227FDA4300D9B16D /* iBeaconVM.swift */; };
 		CC42721322754C4B00E83E5B /* iBeaconVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC42721222754C4B00E83E5B /* iBeaconVC.swift */; };
 		CC59FDF6221549CA00C97868 /* ShortCutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC59FDF5221549CA00C97868 /* ShortCutVC.swift */; };
 		CC59FDF822154A0300C97868 /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = CC59FDF722154A0300C97868 /* Intents.intentdefinition */; };
@@ -32,6 +33,8 @@
 		CC89219421F6FF3F00330991 /* KLineData.plist in Resources */ = {isa = PBXBuildFile; fileRef = CC89219321F6FF3F00330991 /* KLineData.plist */; };
 		CC89219621F7053B00330991 /* KLineModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC89219521F7053B00330991 /* KLineModel.swift */; };
 		CC89219821F7142300330991 /* KLinePriceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC89219721F7142300330991 /* KLinePriceCell.swift */; };
+		CCA0AA1A228D600D0010A30E /* FirebaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA0AA19228D600D0010A30E /* FirebaseVC.swift */; };
+		CCA0AA1C228D608A0010A30E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CCA0AA1B228D608A0010A30E /* GoogleService-Info.plist */; };
 		CCD7AFAF21EF2D0900DFED80 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD7AFAE21EF2D0900DFED80 /* TabBarController.swift */; };
 		CCD7AFB121EF300600DFED80 /* Definition.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD7AFB021EF300600DFED80 /* Definition.swift */; };
 		CCD7AFB321EF307900DFED80 /* GlobalConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD7AFB221EF307900DFED80 /* GlobalConst.swift */; };
@@ -76,6 +79,7 @@
 		6D371CFA479255D8A69B446C /* Pods-CCSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CCSwift.release.xcconfig"; path = "Pods/Target Support Files/Pods-CCSwift/Pods-CCSwift.release.xcconfig"; sourceTree = "<group>"; };
 		81F3BA5560A659B0ED530B27 /* Pods-CCSwiftTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CCSwiftTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CCSwiftTests/Pods-CCSwiftTests.debug.xcconfig"; sourceTree = "<group>"; };
 		BDF200C4653980BAED9252BA /* Pods_CCSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CCSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CC1D189D227FDA4300D9B16D /* iBeaconVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iBeaconVM.swift; sourceTree = "<group>"; };
 		CC42721222754C4B00E83E5B /* iBeaconVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iBeaconVC.swift; sourceTree = "<group>"; };
 		CC59FDF5221549CA00C97868 /* ShortCutVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortCutVC.swift; sourceTree = "<group>"; };
 		CC59FDF722154A0300C97868 /* Intents.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = Intents.intentdefinition; sourceTree = "<group>"; };
@@ -105,6 +109,8 @@
 		CC89219321F6FF3F00330991 /* KLineData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = KLineData.plist; sourceTree = "<group>"; };
 		CC89219521F7053B00330991 /* KLineModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KLineModel.swift; sourceTree = "<group>"; };
 		CC89219721F7142300330991 /* KLinePriceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KLinePriceCell.swift; sourceTree = "<group>"; };
+		CCA0AA19228D600D0010A30E /* FirebaseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseVC.swift; sourceTree = "<group>"; };
+		CCA0AA1B228D608A0010A30E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CCD7AFAD21EF28FA00DFED80 /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		CCD7AFAE21EF2D0900DFED80 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		CCD7AFB021EF300600DFED80 /* Definition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Definition.swift; sourceTree = "<group>"; };
@@ -159,6 +165,7 @@
 			isa = PBXGroup;
 			children = (
 				CC42721222754C4B00E83E5B /* iBeaconVC.swift */,
+				CC1D189D227FDA4300D9B16D /* iBeaconVM.swift */,
 			);
 			path = iBeacon;
 			sourceTree = "<group>";
@@ -200,6 +207,7 @@
 				CC89219121F6FF2200330991 /* data.plist */,
 				CC83E01321EF252C00524B4B /* Assets.xcassets */,
 				CC83E01821EF252C00524B4B /* Info.plist */,
+				CCA0AA1B228D608A0010A30E /* GoogleService-Info.plist */,
 				CC83E01521EF252C00524B4B /* LaunchScreen.storyboard */,
 			);
 			path = CCSwift;
@@ -263,6 +271,7 @@
 		CC89217621F57A4700330991 /* Func */ = {
 			isa = PBXGroup;
 			children = (
+				CCA0AA18228D5FFA0010A30E /* Firebase */,
 				CC42721122754C1500E83E5B /* iBeacon */,
 				CC89217721F57A8E00330991 /* FuncVC.swift */,
 				CC89218021F5DAF700330991 /* ShortCut */,
@@ -343,6 +352,14 @@
 				CC89218F21F6FD3A00330991 /* KLineVM.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		CCA0AA18228D5FFA0010A30E /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				CCA0AA19228D600D0010A30E /* FirebaseVC.swift */,
+			);
+			path = Firebase;
 			sourceTree = "<group>";
 		};
 		CCD7AFAC21EF28BB00DFED80 /* Main */ = {
@@ -554,6 +571,7 @@
 				CC83E01421EF252C00524B4B /* Assets.xcassets in Resources */,
 				CC89219221F6FF2200330991 /* data.plist in Resources */,
 				CC83E01221EF252B00524B4B /* Main.storyboard in Resources */,
+				CCA0AA1C228D608A0010A30E /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -631,14 +649,19 @@
 				"${BUILT_PRODUCTS_DIR}/DNSPageView/DNSPageView.framework",
 				"${BUILT_PRODUCTS_DIR}/FBRetainCycleDetector/FBRetainCycleDetector.framework",
 				"${BUILT_PRODUCTS_DIR}/FLEX/FLEX.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/HandyJSON/HandyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/MLeaksFinder/MLeaksFinder.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/ReactiveCocoa/ReactiveCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyBeaver/SwiftyBeaver.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyTimer/SwiftyTimer.framework",
 				"${BUILT_PRODUCTS_DIR}/Toast-Swift/Toast_Swift.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
@@ -648,14 +671,19 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DNSPageView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBRetainCycleDetector.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FLEX.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HandyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MLeaksFinder.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyBeaver.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyTimer.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Toast_Swift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -698,6 +726,7 @@
 				CCD7AFB321EF307900DFED80 /* GlobalConst.swift in Sources */,
 				CCD7AFBC21F051C300DFED80 /* MineVC.swift in Sources */,
 				CC89217821F57A8E00330991 /* FuncVC.swift in Sources */,
+				CCA0AA1A228D600D0010A30E /* FirebaseVC.swift in Sources */,
 				CCD7AFC821F08D3A00DFED80 /* GetCodeButton.swift in Sources */,
 				CC89217D21F59D5100330991 /* MoonSceneVC.swift in Sources */,
 				CCD7AFD021F08D5600DFED80 /* URLConst.swift in Sources */,
@@ -718,6 +747,7 @@
 				CC89219021F6FD3A00330991 /* KLineVM.swift in Sources */,
 				CC83E00F21EF252B00524B4B /* ViewController.swift in Sources */,
 				CCD7AFCC21F08D3A00DFED80 /* OauthModel.swift in Sources */,
+				CC1D189E227FDA4300D9B16D /* iBeaconVM.swift in Sources */,
 				CCD7AFBA21F0267000DFED80 /* NavigationController.swift in Sources */,
 				CC89217A21F597E500330991 /* CCObject.swift in Sources */,
 				CC83E00D21EF252B00524B4B /* AppDelegate.swift in Sources */,
