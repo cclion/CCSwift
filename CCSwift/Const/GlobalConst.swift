@@ -19,9 +19,16 @@ var randomColor: UIColor {
 }
 
 // MARK: - 尺寸信息
+
 func iPhoneX() -> Bool {
-    return UIScreen.main.bounds.size.height == 812.0
+        guard #available(iOS 11.0, *) else {
+            return false
+        }
+ 
+        return UIApplication.shared.windows[0].safeAreaInsets != UIEdgeInsets.zero
 }
+
+
 
 /// 全屏宽度
 let kScreenWitdh = UIScreen.main.bounds.width
